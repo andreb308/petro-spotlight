@@ -1,0 +1,103 @@
+{
+  "build": {
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "react-app",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": false
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "DeveloperTool",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": [],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "com.tauri.dev",
+      "longDescription": "",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "resources": [],
+      "shortDescription": "",
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "label": "main",
+        "url": "index.html",
+        "visible": false,
+        "decorations": false,
+        "fullscreen": false,
+        "transparent": true,
+        "height": 200,
+        "resizable": true,
+        "title": "react-app-main",
+        "center": true,
+        "alwaysOnTop": false,
+        "width": 400
+      },
+      {
+        "label": "secondary",
+        "title": "react-app-secondary",
+        "url": "popup.html",
+        "visible": false,
+        "center": true,
+        "alwaysOnTop": true,
+        "decorations": false,
+        "hiddenTitle": true,
+        "fullscreen": false,
+        "resizable": false,
+        "transparent": true,
+        "height": 200,
+        "width": 800
+      }
+    ]
+  },
+  "plugins": {
+    "spotlight": {
+      "windows": [
+        {
+          "label": "secondary",
+          "shortcut": "Ctrl+Shift+K"
+        }
+      ],
+      "global_close_shortcut": "Escape"
+    }
+  }
+}
