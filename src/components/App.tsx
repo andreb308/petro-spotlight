@@ -1,10 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
+import {
+  appWindow,
+  currentMonitor,
+  getCurrent,
+  LogicalSize,
+} from "@tauri-apps/api/window";
 import { invoke } from "@tauri-apps/api/tauri";
 import { hide } from "tauri-plugin-spotlight-api";
 import "../styles/App.css";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
+  const [prompt, setPrompt] = useState("");
   const [name, setName] = useState("");
 
   const handleKeydown = useCallback((event: KeyboardEvent) => {
@@ -17,7 +24,7 @@ function App() {
   useEffect(() => {
     // get url params
     const urlParams = new URLSearchParams(window.location.search);
-    setGreetMsg(urlParams.get("prompt") || "");
+    setPrompt(urlParams.get("prompt") || "");
 
     window.addEventListener("keydown", handleKeydown);
     return () => {
@@ -31,7 +38,7 @@ function App() {
   }
 
   return (
-    <div className="container bg-slate-500 w-[400px] h-[200px]">
+    <div className="flex items-center justify-center flex-col bg-slate-500 minw-dvw h-dvh">
       <div className="row">
         <form
           autoComplete="off"
@@ -40,8 +47,8 @@ function App() {
             void greet();
           }}
         >
-          <h1 className="text-3xl font-bold underline bg-pink-900">
-            Hello world!
+          <h1 className="text-3xl font-bold underline text-center mb-8">
+            {prompt}
           </h1>
           <input
             id="greet-input"

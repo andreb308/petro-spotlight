@@ -7,13 +7,13 @@ export function PopupInput({
   onChange,
   onSubmit,
   value,
-  setValue
+  setValue,
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  value: any;
-  setValue: any;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -35,6 +35,7 @@ export function PopupInput({
   useEffect(() => {
     startAnimation();
     document.addEventListener("visibilitychange", handleVisibilityChange);
+    inputRef.current?.focus();
 
     return () => {
       if (intervalRef.current) {
