@@ -15,6 +15,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // get url params
+    const urlParams = new URLSearchParams(window.location.search);
+    setGreetMsg(urlParams.get("prompt") || "");
+
     window.addEventListener("keydown", handleKeydown);
     return () => {
       window.removeEventListener("keydown", handleKeydown);

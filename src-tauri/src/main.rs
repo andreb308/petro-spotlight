@@ -14,24 +14,22 @@ fn greet(name: &str) -> String {
 
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_spotlight::init(Some(tauri_plugin_spotlight::PluginConfig {
-            windows: Some(vec![
-                tauri_plugin_spotlight::WindowConfig {
+        .plugin(tauri_plugin_spotlight::init(Some(
+            tauri_plugin_spotlight::PluginConfig {
+                windows: Some(vec![tauri_plugin_spotlight::WindowConfig {
                     label: String::from("main"),
                     shortcut: String::from("Ctrl+Shift+J"),
                     macos_window_level: None,
-                },
-            ]),
-            global_close_shortcut: Some(String::from("Escape")),
-        })))
+                }]),
+                global_close_shortcut: Some(String::from("Escape")),
+            },
+        )))
         // .plugin(tauri_plugin_positioner::init())
         // // This is required to get tray-relative positions to work
         // .on_system_tray_event(|app, event| {
         //    tauri_plugin_positioner::on_tray_event(app, &event);
         // })
         .invoke_handler(tauri::generate_handler![greet])
-        
-        
         .setup(|app| {
             let window = app.get_window("secondary").unwrap();
 
@@ -41,7 +39,7 @@ fn main() {
 
             #[cfg(target_os = "windows")]
             apply_blur(&window, Some((18, 18, 18, 10)))
-                .expect("Unsupported platform! 'apply_blur' is only supported on Windows");            // app.set_activation_policy(tauri::ActivationPolicy::Accessory);
+                .expect("Unsupported platform! 'apply_blur' is only supported on Windows"); // app.set_activation_policy(tauri::ActivationPolicy::Accessory);
             Ok(())
         })
         .run(tauri::generate_context!())

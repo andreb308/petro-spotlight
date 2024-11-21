@@ -7,11 +7,15 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "react-app",
+    "productName": "petro-spotlight",
     "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
+      "window": {
+        "all": true,
+        "create": true
+      },
       "all": false,
       "shell": {
         "all": false,
@@ -33,7 +37,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.petrospotlight.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -75,8 +79,8 @@
       {
         "label": "secondary",
         "title": "react-app-secondary",
-        "url": "popup.html",
-        "visible": false,
+        "url": "popup.html?prompt='teste'",
+        "visible": true,
         "center": true,
         "alwaysOnTop": true,
         "decorations": false,

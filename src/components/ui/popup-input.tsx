@@ -6,10 +6,14 @@ export function PopupInput({
   placeholders,
   onChange,
   onSubmit,
+  value,
+  setValue
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  value: any;
+  setValue: any;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -43,7 +47,7 @@ export function PopupInput({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
   const [animating, setAnimating] = useState(false);
 
   const draw = useCallback(() => {
