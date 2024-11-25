@@ -11,20 +11,26 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@radix-ui/react-toast": "^1.2.2",
     "@tauri-apps/api": "^1.2.0",
     "@tsparticles/engine": "^3.6.0",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.6.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
+    "lucide-react": "^0.461.0",
+    "next-themes": "^0.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.5.4",
+    "sonner": "^1.7.0",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
     "tauri-plugin-spotlight-api": "latest"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.2",
-    "@types/node": "^18.7.10",
+    "@types/node": "^22.9.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^3.0.0",

@@ -25,7 +25,9 @@ function App() {
     // get url params
     const urlParams = new URLSearchParams(window.location.search);
     setPrompt(urlParams.get("prompt") || "");
-
+    // setTimeout(() => {
+    //   window.location.href = "https://google.com";
+    // }, 3000);
     window.addEventListener("keydown", handleKeydown);
     return () => {
       window.removeEventListener("keydown", handleKeydown);
@@ -38,7 +40,7 @@ function App() {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col bg-slate-500 minw-dvw h-dvh">
+    <div className="flex items-center justify-center flex-col minw-dvw h-dvh">
       <div className="row">
         <form
           autoComplete="off"

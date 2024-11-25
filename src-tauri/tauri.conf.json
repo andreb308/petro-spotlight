@@ -79,7 +79,7 @@
       {
         "label": "secondary",
         "title": "react-app-secondary",
-        "url": "popup.html?prompt='teste'",
+        "url": "popup.html",
         "visible": true,
         "center": true,
         "alwaysOnTop": true,
@@ -88,8 +88,8 @@
         "fullscreen": false,
         "resizable": false,
         "transparent": true,
-        "height": 200,
-        "width": 800
+        "height": 150,
+        "width": 700
       }
     ]
   },

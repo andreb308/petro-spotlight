@@ -8,11 +8,9 @@ import { WebviewWindow } from "@tauri-apps/api/window";
 
 function Popup() {
   const placeholders = [
-    "Qual o resultado do relatório mais recente de sustentabilidade da empresa?",
-    "Quais são os principais desafios enfrentados pelo setor DESEMPENHO?",
+    "Qual o resultado do relatório mais recente de XXX da empresa?",
+    "Quais são as principais conclusões com base no relatório XXX?",
     "Mostre-me gráficos de XXX no ano de YYYY",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
   ];
 
   const [prompt, setPrompt] = useState("");
@@ -25,7 +23,7 @@ function Popup() {
             background="transparent"
             minSize={0.4}
             maxSize={1}
-            particleDensity={130}
+            particleDensity={300}
             className="w-full h-full"
             particleColor="#FFFFFF"
           />
@@ -40,8 +38,8 @@ function Popup() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const webview = new WebviewWindow(Date.now().toString(), {
-      url: `../../index.html?prompt=${prompt}`,
+    const webview = new WebviewWindow("teste-2", {
+      url: `https://icad-dsv.petrobras.com.br/`,
       decorations: true,
       center: true,
       resizable: true,
@@ -52,8 +50,9 @@ function Popup() {
       focus: true,
     });
 
-    webview.once("tauri://created", function () {
+    webview.once("tauri://created", function (e) {
       console.log("created");
+      console.log("webview", e);
     });
 
     webview.once("tauri://error", function (e) {
@@ -61,7 +60,7 @@ function Popup() {
     });
   };
   return (
-    <div className="flex items-center justify-center flex-col w-[800px] h-[200px] bg-slate-950 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.5px] border-gray-800 overflow-hidden bprder">
+    <div className="flex items-center justify-center flex-col w-[700px] h-[150px] rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.1px] border-gray-800 overflow-hidden bprder">
       <Sparkles />
       {/* <img src="https://placehold.co/200x50" alt="" /> */}
       <PopupInput
