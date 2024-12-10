@@ -8,6 +8,8 @@ import { WebviewWindow } from "@tauri-apps/api/window";
 
 function Popup() {
   const placeholders = [
+    // "VERSÃO: https://icad-dsv.petrobras.com.br",
+    // "VERSÃO: localhost:8080",
     "Qual o resultado do relatório mais recente de XXX da empresa?",
     "Quais são as principais conclusões com base no relatório XXX?",
     "Mostre-me gráficos de XXX no ano de YYYY",
@@ -23,7 +25,7 @@ function Popup() {
             background="transparent"
             minSize={0.4}
             maxSize={1}
-            particleDensity={300}
+            particleDensity={50}
             className="w-full h-full"
             particleColor="#FFFFFF"
           />
@@ -33,13 +35,13 @@ function Popup() {
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const webview = new WebviewWindow("teste-2", {
-      url: `https://icad-dsv.petrobras.com.br/`,
+    const webview = new WebviewWindow(Date.now().toString(), {
+      url: `https://icad-dsv.petrobras.com.br/?prompt=${prompt}`,
       decorations: true,
       center: true,
       resizable: true,
@@ -60,7 +62,7 @@ function Popup() {
     });
   };
   return (
-    <div className="flex items-center justify-center flex-col w-[700px] h-[150px] rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.1px] border-gray-800 overflow-hidden bprder">
+    <div className="flex relative items-center justify-center flex-col w-[700px] h-[150px] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.1px] border-gray-600 border-opacity-10 overflow-hidden bprder">
       <Sparkles />
       {/* <img src="https://placehold.co/200x50" alt="" /> */}
       <PopupInput

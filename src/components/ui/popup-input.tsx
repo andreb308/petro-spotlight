@@ -156,6 +156,14 @@ export function PopupInput({
     if (e.key === "Enter" && !animating) {
       vanishAndSubmit();
     }
+    if (e.key === "Tab") {
+      if (!value) {
+        setValue(placeholders[currentPlaceholder]);
+      }
+      setTimeout(() => {
+        inputRef.current!.setSelectionRange(value.length, value.length);
+      }, 50);
+    }
   };
 
   const vanishAndSubmit = () => {
@@ -209,7 +217,7 @@ export function PopupInput({
         )}
       />
 
-      <button
+      {/* <button
         disabled={!value}
         type="submit"
         className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full disabled:bg-gray-100 bg-black dark:bg-zinc-900 dark:disabled:bg-zinc-800 transition duration-200 flex items-center justify-center"
@@ -244,7 +252,7 @@ export function PopupInput({
           <path d="M13 18l6 -6" />
           <path d="M13 6l6 6" />
         </motion.svg>
-      </button>
+      </button> */}
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
         <AnimatePresence mode="wait">
@@ -267,7 +275,7 @@ export function PopupInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="dark:text-zinc-500 text-sm sm:text-[.9rem] font-normal text-neutral-500 pl-4 sm:pl-11 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>

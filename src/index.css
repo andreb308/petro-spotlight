@@ -17,6 +17,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html, body { background: transparent }
+
 .container {
   margin: 0;
   padding-top: 10vh;
