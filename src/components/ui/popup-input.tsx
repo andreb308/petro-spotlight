@@ -161,7 +161,8 @@ export function PopupInput({
         setValue(placeholders[currentPlaceholder]);
       }
       setTimeout(() => {
-        inputRef.current!.setSelectionRange(value.length, value.length);
+        inputRef.current!.focus();
+        inputRef.current!.setSelectionRange(value.length-1, value.length-1);
       }, 50);
     }
   };
@@ -182,8 +183,9 @@ export function PopupInput({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    vanishAndSubmit();
+    // vanishAndSubmit();
     onSubmit && onSubmit(e);
+    setValue('')
   };
   return (
     <form
@@ -212,7 +214,7 @@ export function PopupInput({
         value={value}
         type="text"
         className={cn(
-          "w-full relative text-sm sm:text-base z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
+          "w-full relative text-[.8rem] sm:text-[.85rem] z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-6 pr-4",
           animating && "text-transparent dark:text-transparent"
         )}
       />
@@ -275,7 +277,7 @@ export function PopupInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="dark:text-zinc-500 text-sm sm:text-[.9rem] font-normal text-neutral-500 pl-4 sm:pl-11 text-left w-[calc(100%-2rem)] truncate"
+              className="dark:text-zinc-500 text-xs sm:text-[.8rem] font-normal text-neutral-500 pl-4 sm:pl-6 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>

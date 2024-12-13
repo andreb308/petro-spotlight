@@ -10,9 +10,11 @@ function Popup() {
   const placeholders = [
     // "VERSÃO: https://icad-dsv.petrobras.com.br",
     // "VERSÃO: localhost:8080",
-    "Qual o resultado do relatório mais recente de XXX da empresa?",
-    "Quais são as principais conclusões com base no relatório XXX?",
-    "Mostre-me gráficos de XXX no ano de YYYY",
+    "Qual foi o lucro líquido da Petrobras nos últimos três trimestres e quais fatores influenciaram suas variações?",
+    "Quais foram os principais destaques discutidos no webcast de resultados do último trimestre?",
+    "Como se comportou a produção de petróleo da Petrobras ao longo de 2023, trimestre a trimestre?",
+    "Quais foram as receitas operacionais da Petrobras em 2023 e como elas variaram ao longo dos trimestres?",
+    "Compare os resultados financeiros da Petrobras em reais e dólares para o último trimestre, destacando as principais diferenças.",
   ];
 
   const [prompt, setPrompt] = useState("");
@@ -72,6 +74,12 @@ function Popup() {
         onChange={handleChange}
         onSubmit={onSubmit}
       />
+      <button
+        className="absolute font-semibold top-2 right-2 p-0 size-7 text-gray-200 flex items-center justify-center bg-transparent shadow-none rounded-full"
+        onClick={() => invoke("close")}
+      >
+        <span className="">X</span>
+      </button>
     </div>
   );
 }
