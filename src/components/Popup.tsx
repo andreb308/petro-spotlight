@@ -64,7 +64,7 @@ function Popup() {
     });
   };
   return (
-    <div className="flex relative items-center justify-center flex-col w-[700px] h-[150px] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.1px] border-gray-600 border-opacity-10 overflow-hidden bprder">
+    <div className="flex relative items-center justify-center flex-col w-[700px] h-[150px] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[0.1px] border-gray-600 border-opacity-10 overflow-hidden">
       <Sparkles />
       {/* <img src="https://placehold.co/200x50" alt="" /> */}
       <PopupInput
@@ -75,10 +75,10 @@ function Popup() {
         onSubmit={onSubmit}
       />
       <button
-        className="absolute font-semibold top-2 right-2 p-0 size-7 text-gray-200 flex items-center justify-center bg-transparent shadow-none rounded-full"
+        className="absolute font-semibold top-2 right-2 p-0 size-7 text-black hover:text-white flex items-center justify-center bg-gray-200 hover:bg-gray-800 shadow-none rounded-full border-white border-[1px]"
         onClick={() => invoke("close")}
       >
-        <span className="">X</span>
+        <span className=" mt-0.5">X</span>
       </button>
     </div>
   );

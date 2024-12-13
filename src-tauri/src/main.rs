@@ -13,13 +13,18 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+#[tauri::command]
+fn close() {
+    std::process::exit(0x0);
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_spotlight::init(Some(
             tauri_plugin_spotlight::PluginConfig {
                 windows: Some(vec![tauri_plugin_spotlight::WindowConfig {
-                    label: String::from("main"),
-                    shortcut: String::from("Ctrl+Shift+J"),
+                    label: String::from("secondary"),
+                    shortcut: String::from("Ctrl+Shift+K"),
                     macos_window_level: None,
                 }]),
                 global_close_shortcut: Some(String::from("Escape")),
@@ -30,7 +35,7 @@ fn main() {
         // .on_system_tray_event(|app, event| {
         //    tauri_plugin_positioner::on_tray_event(app, &event);
         // })
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet, close])
         .setup(|app| {
             let window = app.get_window("secondary").unwrap();
 
