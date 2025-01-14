@@ -61,8 +61,8 @@ const items = [
 
 export default function AppSidebar() {
   return (
-    <Sidebar className="motion-preset-slide-right" collapsible="icon">
-      <SidebarContent>
+    <Sidebar collapsible="icon">
+      <SidebarContent className="motion-preset-slide-right" >
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -98,27 +98,10 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter>
-        <SidebarMenu>
+        <SidebarMenu className="motion-preset-slide-right"  >
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -126,7 +109,7 @@ export default function AppSidebar() {
                   <Avatar className=" size-8">
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>{" "}
+                  </Avatar>
                   Username
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
