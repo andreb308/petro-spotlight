@@ -1,38 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import URL from "../../src-tauri/icons/icon.ico";
 import ContextModal from "./ContextModal";
+import { Message } from "@/screens/App";
 
-function ChatMessage({ role }: { role: "user" | "system" }) {
-  
-  const userPlaceholderText =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, at!";
-  const systemPlaceholderText =
-    "Ab minima temporibus exercitationem cum, illum ratione odit autem maiores corporis, ipsa voluptatem dicta maxime facere, dignissimos laboriosam. Numquam at officiis obcaecati in voluptas architecto fugiat, ipsum, minima ipsam labore voluptatibus quibusdam, quo natus hic reprehenderit maxime deserunt adipisci possimus amet similique!";
-  
+function ChatMessage({ role, content, datetime }: Message) {
+  const [isHovering, setIsHovering] = useState(false)
+ const date = new Date(datetime);
+
     return (
-    <div
+    <div 
       className={`w-full flex flex-row gap-2 ${role === "user" && "flex-row-reverse"}`}
     >
       <Avatar className="size-10">
-        <AvatarImage src={role === "system" ? URL : "https://github.com/andreb308.png"}
+        <AvatarImage src={role === "assistant" ? URL : "https://github.com/andreb308.png"}
         />
         <AvatarFallback>AB</AvatarFallback>
       </Avatar>
 
-      <div
-        id="message"
-        className={"relative w-full h-auto rounded-3xl p-4 text-gray-100 max-w-xl bg-green-700"}
-      >
-        {role === "user" ? userPlaceholderText : systemPlaceholderText}
-        <div
-          id="footer"
-          className={`flex flex-row items-center justify-${ role === "user" ? "start" : "end" } gap-2`}
-        >
-          {role === "system" && <ContextModal />}
-          <p className={`text-xs text-zinc-400`} id="timestamp">
-            quarta-feira, 13:13
-          </p>
+      <div id="message" onPointerEnter={() => setIsHovering(true)} onPointerLeave={() => setIsHovering(false)} className={` relative h-auto rounded-2xl px-4 py-3 text-gray-100 max-w-xl bg-green-700`}>
+          <p className="whitespace-pre-wrap">{content}</p>
+          <div id="footer" className={`flex flex-row items-center justify-${ role === "user" ? "start" : "end" } gap-2`}> 
+              {role === "assistant" && <div className={`${!isHovering && 'hidden'}`}> <ContextModal /> </div>}
+              <p className={`text-xs text-zinc-400 h-6 flex items-center justify-center`} id="timestamp">
+                {date.toLocaleString('pt-BR')}
+              </p>
         </div>
       </div>
     </div>

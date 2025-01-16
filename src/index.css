@@ -9,6 +9,7 @@
   font-weight: 400;
 
   color: #0f0f0f;
+  background-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -39,6 +40,9 @@ button {
   cursor: pointer;
 }
 
+#footer {
+  transition-behavior: allow-discrete;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

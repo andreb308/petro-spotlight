@@ -11,8 +11,17 @@ export default {
           "100%": { backgroundPosition: "-200% 0" },
         },
       },
+      appear: {
+        "0%": {
+          opacity: "0",
+        },
+        "100%": {
+          opacity: "1",
+        },
+      },
       animation: {
         shine: "shine 3s ease-out infinite",
+        appear: "appear 0.5s ease-in-out",
       },
       borderRadius: {
         lg: "var(--radius)",

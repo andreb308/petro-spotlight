@@ -2,8 +2,8 @@ import { memo, useMemo, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import { hide } from "tauri-plugin-spotlight-api";
 import "../styles/App.css";
-import { PopupInput } from "./ui/popup-input";
-import { SparklesCore } from "./ui/sparkles";
+import { PopupInput } from "../components/ui/popup-input";
+import { SparklesCore } from "../components/ui/sparkles";
 import { WebviewWindow } from "@tauri-apps/api/window";
 
 function Popup() {
