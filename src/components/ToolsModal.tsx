@@ -68,7 +68,7 @@ const ToolsModal = () => {
   return (
     <Dialog>
       <DialogTrigger className=" h-12 size-full text-white hover:text-black flex justify-center items-center text-sm group/modal-btn whitespace-pre-wrap">
-        <InfoIcon className="hover:motion-rotate-in-[720deg] hover:motion-ease-spring-bouncier cursor-pointer" />   andre.IA: Ferramentas
+        <InfoIcon className="hover:motion-rotate-in-[720deg] hover:motion-ease-spring-bouncier cursor-pointer" />   Andre.IA: Ferramentas
       </DialogTrigger>
       <DialogContent className="max-h-[80dvh] w-[40dvw] overflow-y-auto">
         <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">

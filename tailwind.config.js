@@ -21,7 +21,7 @@ export default {
       },
       animation: {
         shine: "shine 3s ease-out infinite",
-        appear: "appear 0.5s ease-in-out",
+        appear: "appear 3s ease-in-out",
       },
       borderRadius: {
         lg: "var(--radius)",

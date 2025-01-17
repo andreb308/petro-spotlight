@@ -4,19 +4,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { EnhancedButton } from "./enhanced-button";
+import AddFilesPopover from "../AddFilesPopover";
 
 export function PlaceholdersAndVanishInput({
   placeholders,
   onChange,
   onSubmit,
   value,
-  setValue
+  setValue,
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  value: any,
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  value: any;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -108,55 +109,7 @@ export function PlaceholdersAndVanishInput({
     draw();
   }, [value, draw]);
 
-  // const animate = (start: number) => {
-  //   const animateFrame = (pos: number = 0) => {
-  //     requestAnimationFrame(() => {
-  //       const newArr = [];
-  //       for (let i = 0; i < newDataRef.current.length; i++) {
-  //         const current = newDataRef.current[i];
-  //         if (current.x < pos) {
-  //           newArr.push(current);
-  //         } else {
-  //           if (current.r <= 0) {
-  //             current.r = 0;
-  //             continue;
-  //           }
-  //           current.x += Math.random() > 0.5 ? 1 : -1;
-  //           current.y += Math.random() > 0.5 ? 1 : -1;
-  //           current.r -= 0.05 * Math.random();
-  //           newArr.push(current);
-  //         }
-  //       }
-  //       newDataRef.current = newArr;
-  //       const ctx = canvasRef.current?.getContext("2d");
-  //       if (ctx) {
-  //         ctx.clearRect(pos, 0, 800, 800);
-  //         newDataRef.current.forEach((t) => {
-  //           const { x: n, y: i, r: s, color: color } = t;
-  //           if (n > pos) {
-  //             ctx.beginPath();
-  //             ctx.rect(n, i, s, s);
-  //             ctx.fillStyle = color;
-  //             ctx.strokeStyle = color;
-  //             ctx.stroke();
-  //           }
-  //         });
-  //       }
-  //       if (newDataRef.current.length > 0) {
-  //         animateFrame(pos - 8);
-  //       } else {
-  //         setValue("");
-  //         setAnimating(false);
-  //       }
-  //     });
-  //   };
-  //   animateFrame(start);
-  // };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // if (e.key === "Enter" && !animating) {
-    //   vanishAndSubmit();
-    // }
     if (e.key === "Tab") {
       if (!value) {
         setValue(placeholders[currentPlaceholder]);
@@ -167,25 +120,11 @@ export function PlaceholdersAndVanishInput({
     }
   };
 
-  // const vanishAndSubmit = () => {
-  //   setAnimating(true);
-  //   draw();
-
-  //   const value = inputRef.current?.value || "";
-  //   if (value && inputRef.current) {
-  //     const maxX = newDataRef.current.reduce(
-  //       (prev, current) => (current.x > prev ? current.x : prev),
-  //       0
-  //     );
-  //     animate(maxX);
-  //   }
-  // };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // vanishAndSubmit();
     onSubmit && onSubmit(e);
-    setValue('');
+    setValue("");
   };
   return (
     <form
@@ -222,7 +161,7 @@ export function PlaceholdersAndVanishInput({
       <EnhancedButton
         disabled={!value}
         type="submit"
-        effect={value ? 'shine' : null}
+        effect={value ? "shine" : null}
         className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full bg-zinc-900 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center border-none"
       >
         <motion.svg
@@ -256,6 +195,8 @@ export function PlaceholdersAndVanishInput({
           <path d="M13 6l6 6" />
         </motion.svg>
       </EnhancedButton>
+      
+      <AddFilesPopover />
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
         <AnimatePresence mode="wait">

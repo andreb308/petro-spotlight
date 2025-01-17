@@ -1,47 +1,35 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { EnhancedButton } from "@/components/ui/enhanced-button";
 import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalTrigger,
-} from "./ui/animated-modal";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { SquareMousePointer } from "lucide-react";
 
-const ContextModal = () => {
+const ContextModal = ({ hover }: { hover: Boolean }) => {
   return (
-    <Modal>
-      <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center h-6 w-auto items-center text-sm group/modal-btn">
-        <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
-          Ver Contexto
-        </span>
-        <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
-          <SquareMousePointer size={16} />
-        </div>
-      </ModalTrigger>
-      <ModalBody>
-        <ModalContent>
-          <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
-            Lorem ipsum
-            <span className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 border border-gray-200">
-              dolor
-            </span>
-            sit amet.
-          </h4>
-          <div className="flex justify-center items-center"></div>
-        </ModalContent>
-
-        <ModalFooter className="gap-4">
-          <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
-            Cancel
-          </button>
-          <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-            Not Cancel
-          </button>
-        </ModalFooter>
-      </ModalBody>
-    </Modal>
+    <Dialog>
+      <DialogTrigger asChild className={`${!hover && 'hidden'}`}>
+        <EnhancedButton className="motion-preset-slide-right-lg  h-6" effect="expandIcon" icon={SquareMousePointer} iconPlacement="right">Ver Contexto</EnhancedButton>
+      </DialogTrigger>
+      <DialogContent className="w-1/2 ">
+        <DialogHeader>
+          <DialogTitle>Lorem ipsum dolor sit amet.</DialogTitle>
+        </DialogHeader>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, qui natus unde laudantium fuga consequuntur nihil hic illum accusantium assumenda quisquam ratione similique praesentium vero blanditiis. Ipsum, possimus nesciunt natus dicta voluptatem facere, molestiae odio consequuntur ipsa accusamus, quis reprehenderit. Voluptatem debitis mollitia blanditiis fuga quaerat pariatur! Omnis ratione qui aliquid autem quaerat nulla doloribus, quibusdam praesentium ipsum aut et. Hic earum voluptates quasi quidem veniam, sit aliquam maxime minus! Nostrum voluptates corrupti delectus itaque, nam eaque dignissimos porro mollitia aliquam distinctio veniam labore, beatae ex neque error sunt necessitatibus, commodi voluptatibus exercitationem dolore? Quae aliquam distinctio temporibus id officiis laudantium quis repellat eius nisi, praesentium alias. Vel consequatur consequuntur assumenda, necessitatibus in autem eaque dicta porro aut, nostrum excepturi fugiat numquam blanditiis sit nemo laboriosam voluptatibus modi laborum labore ipsum aperiam, asperiores exercitationem? Earum perferendis eius ullam saepe expedita architecto illum eum porro, quod ratione non ipsum ducimus asperiores.
+        <DialogFooter>
+          <EnhancedButton type="submit">Save changes</EnhancedButton>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

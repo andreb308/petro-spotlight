@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Sidebar from "../components/Sidebar";
 import { SidebarProvider, SidebarTrigger } from "../components/ui/sidebar";
@@ -7,14 +7,15 @@ import ChatMessage from "../components/ChatMessage";
 import { PromptInput } from "../components/PromptInput";
 import { Modal } from "@/components/ui/animated-modal";
 
-
 export type Message = {
-  role: 'user' | "assistant";
+  role: "user" | "assistant";
   content: string;
   datetime: string | number;
-}
+};
 
 function App() {
+  
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "user",
@@ -59,37 +60,43 @@ function App() {
       content: `No problem! Here is an example of how to reverse a string in Javascript:\n\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Iste nobis nostrum quia quasi ex! Maxime quibusdam beatae deserunt, sed voluptatum amet debitis consectetur nemo delectus, molestiae quo aliquam illum ad cum consequuntur esse aut impedit. Ex expedita perspiciatis at ipsam! Et deserunt ea voluptatibus velit recusandae repellat accusamus, cumque ad ex nesciunt excepturi corporis, veritatis, adipisci minus accusantium reiciendis blanditiis quia labore eum commodi omnis natus amet! Distinctio, similique incidunt cupiditate quos beatae impedit explicabo mollitia, itaque magni obcaecati debitis deleniti tempore qui molestiae, esse autem? Aliquid similique eius suscipit temporibus labore facere minima, inventore voluptates sit! Deserunt, dolorem cupiditate!`,
       datetime: "2024-03-15T12:07:00Z",
     },
-  ])
+  ]);
+  
+  useEffect(() => {
+    chatContainerRef.current!.scrollTop =
+      chatContainerRef.current!.scrollHeight;
+  }, [messages]);
 
   return (
-      <SidebarProvider>
-        {/* <div className="flex flex-row minw-dvw h-dvh ">
+    <SidebarProvider>
+      {/* <div className="flex flex-row minw-dvw h-dvh ">
         </div> */}
-        <Sidebar />
-        {/* <SidebarTrigger className="" /> */}
-        <div className="w-dvw h-dvh p-4 px-48 bg-black grid grid-cols-1 grid-rows-12">
-          <div
-            className="animate-appear rounded-md row-span-10 gap-12 flex flex-col p-12 overflow-y-auto"
-            style={{ scrollbarColor: "white black" }}
-          >
-            {messages.map((m, i) => (
-              <ChatMessage
-                key={m.datetime}
-                role={m.role as "user" | "assistant"}
-                content={m.content}
-                datetime={m.datetime}
-                />
-              ))}
-          </div>
-          <div className="rounded-md row-span-2 mt-2 flex items-center justify-end flex-col ">
-            <PromptInput setter={setMessages} />
-
-            <p className="motion-preset-slide-up-lg motion-delay-500 text-zinc-700 mt-2 text-center text-sm">
-              Texto explicativo caso precise
-            </p>
-          </div>
+      <Sidebar />
+      <SidebarTrigger className="motion-preset-slide-down-sm motion-delay-1000 text-white size-10" />
+      <div className="w-dvw h-dvh p-4 px-48 bg-black grid grid-cols-1 grid-rows-12">
+        <div
+          className="motion-preset-slide-down-sm motion-delay-1000 rounded-md row-span-10 gap-12 flex flex-col p-12 overflow-y-auto"
+          style={{ scrollbarColor: "white black" }}
+          ref={chatContainerRef}
+        >
+          {messages.map((m, i) => (
+            <ChatMessage
+              key={m.datetime}
+              role={m.role as "user" | "assistant"}
+              content={m.content}
+              datetime={m.datetime}
+            />
+          ))}
         </div>
-      </SidebarProvider>
+        <div className="rounded-md row-span-2 mt-2 flex items-center justify-end flex-col ">
+          <PromptInput setter={setMessages} />
+
+          <p className="motion-preset-slide-up-lg motion-delay-500 text-muted-foreground mt-2 text-center text-sm">
+            Texto explicativo caso precise
+          </p>
+        </div>
+      </div>
+    </SidebarProvider>
   );
 }
 

@@ -32,9 +32,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Switch } from "./ui/switch";
-import { Label } from "@/components/ui/label";
 import ToolsModal from "./ToolsModal";
+import SettingsModal from "./SettingsModal";
 
 //
 
@@ -69,10 +68,10 @@ const items = [
 
 export default function AppSidebar() {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="offcanvas">
       <SidebarHeader className="motion-preset-slide-right-lg relative flex items-center flex-row justify-between px-4">
-        <h3 className="font-bold">andre.IA</h3>
-        <SettingsIcon className="hover:motion-rotate-in-[180deg] hover:motion-ease-spring-bouncier size-5 cursor-pointer" />
+        <h3 className="font-bold">Andre.IA</h3>
+        <SettingsModal />
       </SidebarHeader>
       <SidebarContent className="motion-preset-slide-right-lg">
         <SidebarGroup>
@@ -80,16 +79,7 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <div className="flex flex-row justify-between items-center px-2">
-                  <Label
-                    htmlFor="advanced-mode"
-                    className="h-full w-full flex items-center gap-2 text-left"
-                  >
-                    <Bug className="size-4" />
-                    Modo Experimental
-                  </Label>
-                  <Switch id="advanced-mode" />
-                </div>
+                
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
