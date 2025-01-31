@@ -32,8 +32,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import ToolsModal from "./ToolsModal";
-import SettingsModal from "./SettingsModal";
+import ToolsModal from "../components/abstractions/ModalTools";
+import SettingsModal from "../components/abstractions/ModalSettings";
 
 //
 
@@ -75,29 +75,44 @@ export default function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="motion-preset-slide-right-lg">
         <SidebarGroup>
-          <SidebarGroupLabel>Avançado</SidebarGroupLabel>
+          <SidebarGroupLabel>Seção 1</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
+              {items.map((item, i) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <item.icon />
-                      <span>{item.title}</span>
+                      <span>{`Botão ${i+1}`}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          {/* <SidebarGroupLabel></SidebarGroupLabel> */}
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <p className="mt-8 px-2 italic whitespace-pre-line text-muted-foreground">
+                {`When she turned to go home
+                She heard the echoes of new words
+                "May your heart remain breakable
+                But never by the same hand twice"
+                And even louder
+                "Without your past
+                You could never have arrived
+                So wondrously and brutally
+                By design or some violent, exquisite happenstance:
+                Here"
+                
+                And in the death of her reputation
+                She felt truly alive.
+                — Taylor Swift 🌟`}
+                </p>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -106,9 +121,9 @@ export default function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu className="motion-preset-slide-right-lg">
           <SidebarMenuItem>
-        <SidebarMenuButton className="h-12 flex grow">
-          <ToolsModal />
-        </SidebarMenuButton>
+            <SidebarMenuButton className="h-12 flex grow">
+              <ToolsModal />
+            </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="h-12">

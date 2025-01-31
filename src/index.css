@@ -16,6 +16,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
 }
 
 html, body { background: transparent }
@@ -43,6 +47,27 @@ button {
 #footer {
   transition-behavior: allow-discrete;
 }
+
+#aspect-ratio-warning {
+  display: none
+}
+
+@media (max-aspect-ratio: 1.6) {
+  #root {
+    display: none;
+  }
+
+  #aspect-ratio-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 100dvh;
+    width: 100dvw;
+  }
+  
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

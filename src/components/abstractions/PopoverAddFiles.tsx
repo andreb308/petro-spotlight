@@ -1,13 +1,19 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { EnhancedButton } from "./ui/enhanced-button";
+import { EnhancedButton } from "../ui/enhanced-button";
 import { motion } from "framer-motion";
-import FileUploaderTest from "./ui/Uploader";
-
+import FileUploaderTest from "./Uploader";
+import { useFilesContext } from "@/templates/FilesContext";
 
 function AddFilesPopover() {
+  const { files } = useFilesContext();
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -15,6 +21,11 @@ function AddFilesPopover() {
           type="button"
           className="absolute right-12 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full bg-zinc-900 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center border-none"
         >
+          {!!files?.length && (
+            <span className="absolute bottom-0 right-0 flex justify-center items-center text-xs p-1.5 z-[51] rounded-full bg-red-600 size-2 text-white">
+              {files.length}
+            </span>
+          )}
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -32,8 +43,8 @@ function AddFilesPopover() {
           </motion.svg>
         </EnhancedButton>
       </PopoverTrigger>
-      <PopoverContent className="w-72 bg-black">
-      <FileUploaderTest />
+      <PopoverContent className="w-72 bg-black border-[#fff]">
+        <FileUploaderTest />
       </PopoverContent>
     </Popover>
   );

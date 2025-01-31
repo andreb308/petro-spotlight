@@ -11,10 +11,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SettingsIcon, SquareMousePointer, Bug, BugIcon, BookUserIcon } from "lucide-react";
-import { Switch } from "./ui/switch";
+import { Switch } from "../ui/switch";
 import { Label } from "@/components/ui/label";
-import SettingsOption from "./comp-188";
-import { Textarea } from "./ui/textarea";
+import SettingsOption from "./SettingsOption";
+import { Textarea } from "../ui/textarea";
 
 const SettingsModal = () => {
   return (

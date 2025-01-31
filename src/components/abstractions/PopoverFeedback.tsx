@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
 
-export default function Component() {
+export default function PopoverFeedback() {
   return (
     <div className="flex flex-col gap-4">
       <Popover>

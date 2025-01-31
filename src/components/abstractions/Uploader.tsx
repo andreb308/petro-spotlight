@@ -8,6 +8,7 @@ import {
   FileInput,
 } from "@/components/ui/file-upload";
 import { Paperclip } from "lucide-react";
+import { useFilesContext } from "@/templates/FilesContext";
 
 const FileSvgDraw = () => {
   return (
@@ -38,11 +39,11 @@ const FileSvgDraw = () => {
   );
 };
 const FileUploaderTest = () => {
-  const [files, setFiles] = useState<File[] | null>(null);
+  const { files, setFiles } = useFilesContext();
 
   const dropZoneConfig = {
     maxFiles: 5,
-    maxSize: 1024 * 1024 * 4,
+    maxSize: 1024 * 1024 * 8,
     multiple: true,
   };
 
@@ -58,13 +59,13 @@ const FileUploaderTest = () => {
           <FileSvgDraw />
         </div>
       </FileInput>
-      <FileUploaderContent>
+      <FileUploaderContent className="" >
         {files &&
           files.length > 0 &&
           files.map((file, i) => (
-            <FileUploaderItem  key={i} index={i}>
+            <FileUploaderItem className="py-4" key={i} index={i}>
               <Paperclip className="h-4 w-4 stroke-current" />
-              <span>{file.name}</span>
+              <span className="w-48 text-nowrap overflow-hidden pr-4 text-ellipsis" >{file.name}</span>
             </FileUploaderItem>
           ))}
       </FileUploaderContent>

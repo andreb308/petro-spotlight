@@ -14,11 +14,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SquareMousePointer } from "lucide-react";
 
-const ContextModal = ({ hover }: { hover: Boolean }) => {
+const ContextModal = ({ hover=true }: { hover?: Boolean }) => {
   return (
     <Dialog>
       <DialogTrigger asChild className={`${!hover && 'hidden'}`}>
-        <EnhancedButton className="motion-preset-slide-right-lg  h-6" effect="expandIcon" icon={SquareMousePointer} iconPlacement="right">Ver Contexto</EnhancedButton>
+        <EnhancedButton className="motion-preset-slide-up-lg h-6" effect="expandIcon" icon={SquareMousePointer} iconPlacement="right">Ver Contexto</EnhancedButton>
       </DialogTrigger>
       <DialogContent className="w-1/2 ">
         <DialogHeader>
