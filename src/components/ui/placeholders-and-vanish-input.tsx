@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { ElementType, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { EnhancedButton } from "./enhanced-button";
 import AddFilesPopover from "../abstractions/PopoverAddFiles";
@@ -19,6 +19,7 @@ export function PlaceholdersAndVanishInput({
   value: any;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
+  const AnimatePresenceFix = AnimatePresence as ElementType;
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -199,7 +200,7 @@ export function PlaceholdersAndVanishInput({
       <AddFilesPopover />
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
-        <AnimatePresence mode="wait">
+        <AnimatePresenceFix mode="wait">
           {!value && (
             <motion.p
               initial={{
@@ -224,7 +225,7 @@ export function PlaceholdersAndVanishInput({
               {placeholders[currentPlaceholder]}
             </motion.p>
           )}
-        </AnimatePresence>
+        </AnimatePresenceFix>
       </div>
     </form>
   );

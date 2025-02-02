@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { ElementType, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function PopupInput({
@@ -15,6 +15,8 @@ export function PopupInput({
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
+
+  const AnimatePresenceFix = AnimatePresence as ElementType;
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -257,7 +259,7 @@ export function PopupInput({
       </button> */}
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
-        <AnimatePresence mode="wait">
+        <AnimatePresenceFix mode="wait">
           {!value && (
             <motion.p
               initial={{
@@ -282,7 +284,7 @@ export function PopupInput({
               {placeholders[currentPlaceholder]}
             </motion.p>
           )}
-        </AnimatePresence>
+        </AnimatePresenceFix>
       </div>
     </form>
   );

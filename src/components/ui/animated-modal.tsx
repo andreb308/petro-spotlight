@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import React, {
+  ElementType,
   ReactNode,
   createContext,
   useContext,
@@ -67,6 +68,8 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
+
+  const AnimatePresenceFix = AnimatePresence as ElementType;
   const { open } = useModal();
 
   useEffect(() => {
@@ -82,7 +85,7 @@ export const ModalBody = ({
   useOutsideClick(modalRef, () => setOpen(false));
 
   return (
-    <AnimatePresence>
+    <AnimatePresenceFix>
       {open && (
         <motion.div
           initial={{
@@ -134,7 +137,7 @@ export const ModalBody = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresenceFix>
   );
 };
 
