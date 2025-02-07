@@ -1,15 +1,13 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Textarea } from "@/components/ui/textarea";
 import { EnhancedButton } from "../ui/enhanced-button";
 import { motion } from "framer-motion";
 import FileUploaderTest from "./Uploader";
-import { useFilesContext } from "@/templates/FilesContext";
+import { useFilesContext } from "@/screens/templates/FilesContext";
 
 function AddFilesPopover() {
   const { files } = useFilesContext();
@@ -33,9 +31,9 @@ function AddFilesPopover() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-paperclip text-gray-300 h-4 w-4"
           >
             <path d="M13.234 20.252 21 12.3" />

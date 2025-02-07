@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   FileUploader,
   FileUploaderContent,
@@ -8,7 +7,7 @@ import {
   FileInput,
 } from "@/components/ui/file-upload";
 import { Paperclip } from "lucide-react";
-import { useFilesContext } from "@/templates/FilesContext";
+import { useFilesContext } from "@/screens/templates/FilesContext";
 
 const FileSvgDraw = () => {
   return (
@@ -63,7 +62,7 @@ const FileUploaderTest = () => {
         {files &&
           files.length > 0 &&
           files.map((file, i) => (
-            <FileUploaderItem className="py-4" key={i} index={i}>
+            <FileUploaderItem className="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-sm py-4" key={i} index={i}>
               <Paperclip className="h-4 w-4 stroke-current" />
               <span className="w-48 text-nowrap overflow-hidden pr-4 text-ellipsis" >{file.name}</span>
             </FileUploaderItem>

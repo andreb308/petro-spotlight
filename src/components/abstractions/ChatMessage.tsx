@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import URL from "../../../src-tauri/icons/icon.ico";
 import ContextModal from "./ModalContext";
-import { Message } from "@/screens/App";
 import StarsRating from "./StarsRating";
-import Component from "./PopoverFeedback";
+import ImageModal from "./Modal_Image";
+import { CodeBlockDemo } from "./CodeBlockTest";
+import { Message } from "@/screens/templates/MessagesContext";
 
-function ChatMessage({ role, content, datetime }: Message) {
+function ChatMessage({ message_id, role, content, datetime, rating }: Message) {
+  const memoizedValue = content.length % 2;
   const [isHovering, setIsHovering] = useState(false);
   const date = new Date(datetime);
+  // const { messages, setMessages } = useMessagesContext();
 
   return (
     <div
@@ -31,28 +34,22 @@ function ChatMessage({ role, content, datetime }: Message) {
       >
         <p className="whitespace-pre-wrap">{content}</p>
 
-        {role === "assistant" && (
-          <div id="img-container" className="w-full flex justify-center my-4">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://placehold.co/600x100/"
-            >
-              <img className="rounded-lg" src="https://placehold.co/600x100/" alt="" />
-            </a>
-          </div>
-        )}
+        {
+          /* randomizing image vs code to test */
+          role === "assistant" &&
+            (!memoizedValue ? <ImageModal /> : <CodeBlockDemo />)
+        }
 
         <div
           id="footer"
-          className={`flex flex-row items-center justify-${
+          className={`mt-2 flex flex-row items-center justify-${
             role === "user" ? "start" : "end"
           } gap-2`}
         >
           {role === "assistant" && isHovering && (
-            <div className="flex gap-2" >
+            <div className="flex gap-2">
               <ContextModal />
-              <StarsRating />
+              <StarsRating message_id={message_id} rating={rating} />
             </div>
           )}
 

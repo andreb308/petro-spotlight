@@ -1,8 +1,8 @@
 "use client";
 
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
-import { Message } from "@/screens/App";
 import { useState } from "react";
+import { Message } from "./MessagesContext";
 
 export function PromptInput({ setter }: { setter: React.Dispatch<React.SetStateAction<Message[]>> }) {
 
@@ -25,7 +25,7 @@ export function PromptInput({ setter }: { setter: React.Dispatch<React.SetStateA
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setter( prev => [...prev, {role: 'user', content: value, datetime: Date.now()}] )
+    setter( prev => [...prev, {role: "user", content: value, datetime: Date.now(), message_id: prev.length+1, rating: "-1"}] )
     console.log("submitted");
   };
   return (

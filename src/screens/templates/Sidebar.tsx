@@ -7,6 +7,7 @@ import {
   ChevronUp,
   SettingsIcon,
   Bug,
+  PlayCircleIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -32,8 +33,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import ToolsModal from "../components/abstractions/ModalTools";
-import SettingsModal from "../components/abstractions/ModalSettings";
+import ToolsModal from "../../components/abstractions/ModalTools";
+import SettingsModal from "../../components/abstractions/ModalSettings";
+import LogoURL from "@/assets/AndreIA-Logo-TEST.svg";
+import AndreIA_Logo from "@/assets/AndreIA-Logo-Component";
 
 //
 
@@ -62,16 +65,16 @@ const items = [
   {
     title: "Settings",
     url: "#",
-    icon: Settings,
+    icon: PlayCircleIcon,
   },
 ];
 
 export default function AppSidebar() {
   return (
     <Sidebar collapsible="offcanvas">
-      <SidebarHeader className="motion-preset-slide-right-lg relative flex items-center flex-row justify-between px-4">
-        <h3 className="font-bold">Andre.IA</h3>
-        <SettingsModal />
+      <SidebarHeader className="motion-preset-slide-right-lg relative flex items-start flex-row justify-between px-4">
+        {/* <img src={LogoURL} alt="Andre.IA" className="z-0" /> */}
+        <AndreIA_Logo/>
       </SidebarHeader>
       <SidebarContent className="motion-preset-slide-right-lg">
         <SidebarGroup>
@@ -81,9 +84,9 @@ export default function AppSidebar() {
               {items.map((item, i) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{`Botão ${i+1}`}</span>
+                    <a href={item.url} className="group/item">
+                      <item.icon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
+                      <span>{`Botão ${i + 1}`}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -97,7 +100,7 @@ export default function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <p className="mt-8 px-2 italic whitespace-pre-line text-muted-foreground">
-                {`When she turned to go home
+                  {`When she turned to go home
                 She heard the echoes of new words
                 "May your heart remain breakable
                 But never by the same hand twice"
@@ -124,14 +127,17 @@ export default function AppSidebar() {
             <SidebarMenuButton className="h-12 flex grow">
               <ToolsModal />
             </SidebarMenuButton>
+            <SidebarMenuButton className="h-12 flex grow">
+              <SettingsModal />
+            </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="h-12">
                   <Avatar className="size-8">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
+                    <AvatarImage src="https://placehold.co/32" />
+                    <AvatarFallback>AB</AvatarFallback>
                   </Avatar>
-                  Username
+                  Nome de Usuário
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
