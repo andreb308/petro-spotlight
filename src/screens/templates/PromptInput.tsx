@@ -3,10 +3,16 @@
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { useState } from "react";
 import { Message } from "./MessagesContext";
+import { useParams, useNavigate } from "react-router";
 
-export function PromptInput({ setter }: { setter: React.Dispatch<React.SetStateAction<Message[]>> }) {
-
-  const [value, setValue] = useState('')
+export function PromptInput({
+  setter,
+}: {
+  setter: React.Dispatch<React.SetStateAction<Message[]>>;
+}) {
+  const [value, setValue] = useState("");
+  const isHomePage = !useParams().chatId;
+  let navigate = useNavigate();
   // Assistente de Análise de Desempenho: "Como você pode me ajudar a entender os resultados financeiros trimestrais da Petrobras?"
   // Consultor de Dados Financeiros: "Quais são as suas capacidades para analisar demonstrações financeiras e relatórios de resultados?"
   // Guia de Ferramentas de Consulta: "Quais ferramentas você utiliza para obter informações sobre produção e vendas da Petrobras?"
@@ -25,8 +31,21 @@ export function PromptInput({ setter }: { setter: React.Dispatch<React.SetStateA
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setter( prev => [...prev, {role: "user", content: value, datetime: Date.now(), message_id: prev.length+1, rating: "-1"}] )
+    setter((prev) => [
+      ...prev,
+      {
+        role: "user",
+        content: value,
+        datetime: Date.now(),
+        message_id: prev.length + 1,
+        rating: "-1",
+      },
+    ]);
     console.log("submitted");
+    if (isHomePage) {
+      navigate(`/chat/13`);
+      // navigate(`/chat/13?prompt=${value}`)
+    }
   };
   return (
     <PlaceholdersAndVanishInput

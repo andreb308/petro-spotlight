@@ -37,6 +37,7 @@ import ToolsModal from "../../components/abstractions/ModalTools";
 import SettingsModal from "../../components/abstractions/ModalSettings";
 import LogoURL from "@/assets/AndreIA-Logo-TEST.svg";
 import AndreIA_Logo from "@/assets/AndreIA-Logo-Component";
+import { Link } from "react-router";
 
 //
 
@@ -84,10 +85,10 @@ export default function AppSidebar() {
               {items.map((item, i) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="group/item">
+                    <Link to={"/chat/13"} className="group/item">
                       <item.icon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
-                      <span>{`Botão ${i + 1}`}</span>
-                    </a>
+                      <span>{`Link ${i + 1}`}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
