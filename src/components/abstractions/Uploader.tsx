@@ -32,7 +32,7 @@ const FileSvgDraw = () => {
         &nbsp; or drag and drop
       </p>
       <p className="text-xs text-gray-500 dark:text-gray-400">
-        SVG, PNG, JPG or GIF
+        PDF, TXT or DOCX files
       </p>
     </>
   );

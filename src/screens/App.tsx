@@ -9,18 +9,9 @@ import { MessagesContextProvider } from "@/screens/templates/MessagesContext";
 
 function App() {
   return (
-    <SidebarProvider>
-      <FilesContextProvider>
-        {/* <div className="flex flex-row minw-dvw h-dvh ">
-        </div> */}
-        <Sidebar />
-        <SidebarTrigger className="motion-preset-slide-down-sm motion-delay-1000 text-white size-10" />
-
-        <MessagesContextProvider>
-          <Chat />
-        </MessagesContextProvider>
-      </FilesContextProvider>
-    </SidebarProvider>
+    <MessagesContextProvider>
+      <Chat />
+    </MessagesContextProvider>
   );
 }
 

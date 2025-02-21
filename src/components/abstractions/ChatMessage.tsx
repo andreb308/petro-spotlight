@@ -6,11 +6,13 @@ import StarsRating from "./StarsRating";
 import ImageModal from "./Modal_Image";
 import { CodeBlockDemo } from "./CodeBlockTest";
 import { Message } from "@/screens/templates/MessagesContext";
+import PopoverFeedback from "./PopoverFeedback";
 
-function ChatMessage({ message_id, role, content, datetime, rating }: Message) {
+function ChatMessage({ msg }: { msg: Message }) {
+  const { message_id, role, content, timestamp, score, comment } = msg;
   const memoizedValue = content.length % 2;
   const [isHovering, setIsHovering] = useState(false);
-  const date = new Date(datetime);
+  const date = new Date(timestamp);
   // const { messages, setMessages } = useMessagesContext();
 
   return (
@@ -30,14 +32,14 @@ function ChatMessage({ message_id, role, content, datetime, rating }: Message) {
         id="message"
         onPointerEnter={() => setIsHovering(true)}
         onPointerLeave={() => setIsHovering(false)}
-        className={` relative h-auto rounded-2xl px-4 py-3 text-gray-100 max-w-xl bg-green-700`}
+        className={` relative h-auto rounded-2xl px-4 py-3 text-gray-100 max-w-xl bg-gray-900`}
       >
         <p className="whitespace-pre-wrap">{content}</p>
 
         {
           /* randomizing image vs code to test */
           role === "assistant" &&
-            (!memoizedValue ? <ImageModal /> : <CodeBlockDemo />)
+            (!memoizedValue ? <ImageModal /> : null)
         }
 
         <div
@@ -49,7 +51,7 @@ function ChatMessage({ message_id, role, content, datetime, rating }: Message) {
           {role === "assistant" && isHovering && (
             <div className="flex gap-2">
               <ContextModal />
-              <StarsRating message_id={message_id} rating={rating} />
+              <PopoverFeedback message_id={message_id} rating={score} feedback={comment} />
             </div>
           )}
 

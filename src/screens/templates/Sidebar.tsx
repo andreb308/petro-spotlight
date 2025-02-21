@@ -77,7 +77,7 @@ export default function AppSidebar() {
         {/* <img src={LogoURL} alt="Andre.IA" className="z-0" /> */}
         <AndreIA_Logo/>
       </SidebarHeader>
-      <SidebarContent className="motion-preset-slide-right-lg">
+      <SidebarContent style={{ scrollbarColor: "#ffffff22 black" }} className="motion-preset-slide-right-lg">
         <SidebarGroup>
           <SidebarGroupLabel>Seção 1</SidebarGroupLabel>
           <SidebarGroupContent>

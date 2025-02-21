@@ -29,7 +29,7 @@ const SettingsModal = () => {
           <span className="w-3/4  text-center">Configurações</span>
         </div>
       </DialogTrigger>
-      <DialogContent className="w-1/3 ">
+      <DialogContent className="w-[40%] ">
         <DialogHeader>
           <DialogTitle>Configurações</DialogTitle>
         </DialogHeader>

@@ -54,6 +54,7 @@ export function PromptInput({
       onSubmit={onSubmit}
       value={value}
       setValue={setValue}
+      
     />
   );
 }
