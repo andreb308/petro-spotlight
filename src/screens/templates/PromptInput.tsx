@@ -34,11 +34,14 @@ export function PromptInput({
     setter((prev) => [
       ...prev,
       {
+        message_id: prev.length + 1,
+        user_key: prev[0].user_key,
         role: "user",
         content: value,
-        datetime: Date.now(),
-        message_id: prev.length + 1,
-        rating: "-1",
+        documents: null,
+        timestamp: Date.now(),
+        score: null,
+        comment: null,
       },
     ]);
     console.log("submitted");
@@ -54,6 +57,7 @@ export function PromptInput({
       onSubmit={onSubmit}
       value={value}
       setValue={setValue}
+      
     />
   );
 }

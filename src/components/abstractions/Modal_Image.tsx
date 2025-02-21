@@ -5,7 +5,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 
-const ImageModal = ({ src = "https://placehold.co/1500x300/" }: { src?: string }) => {
+const ImageModal = ({ src = "https://placehold.co/640x360/111/222" }: { src?: string }) => {
   return (
     <Dialog>
       <DialogTrigger className="w-full flex justify-center my-4">

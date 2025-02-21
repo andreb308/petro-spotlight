@@ -10,7 +10,7 @@ export default function StarsRating({
   rating,
 }: {
   message_id: number;
-  rating: string;
+  rating: string | null;
 }) {
   const id = useId();
   const [hoverRating, setHoverRating] = useState("");
@@ -20,7 +20,7 @@ export default function StarsRating({
 
   const handleRating = (id: number, newRating: Rating) => {
     setMessages((m) =>
-      m.map((item) => ((item.role === "assistant" && item.message_id === id) ? { ...item, rating: newRating } : item))
+      m.map((item) => ((item.role === "assistant" && item.message_id === id) ? { ...item, score: newRating } : item))
     );
     setCurrentRating(newRating); // Update local state
   };

@@ -23,7 +23,7 @@ const toolList = [
 export default function ToolsAccordion() {
   return (
     <div className="space-y-4 w-full ">
-      <h2 className="text-xl font-bold">Ferramentas Disponíveis</h2>
+      <h2 className="text-xl font-bold">Bases de Conhecimento</h2>
       <Accordion type="single" collapsible className="w-full border border-input px-4 shadow-sm shadow-black/5 rounded-lg" defaultValue="1">
         {toolList.map((item, ind) => (
           <AccordionItem
