@@ -25,17 +25,17 @@ export default function PopoverFeedback({
           <StarIcon className="cursor-pointer h-6 flex items-center text-muted-foreground" />
         </PopoverTrigger>
         <PopoverContent className="w-72">
-          <h2 className="mb-2 text-sm font-semibold">Send us feedback</h2>
+          <h2 className="mb-2 text-sm font-semibold">Avalie a resposta:</h2>
           <form className="space-y-3">
             <StarsRating message_id={message_id} rating={rating} />
             <Textarea
               id="feedback"
-              placeholder="How can we improve Origin UI?"
+              placeholder="O que achou da resposta?"
               aria-label="Send feedback"
               value={feedback ?? ""}
             />
             <div className="flex flex-col sm:flex-row sm:justify-end">
-              <Button size="sm">Send feedback</Button>
+              <Button onClick={(e) => e.preventDefault()} size="sm">Enviar Avaliação</Button>
             </div>
           </form>
         </PopoverContent>

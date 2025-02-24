@@ -42,7 +42,7 @@ function MainChat() {
 
         {/*  */}
       </div>
-      <div className="rounded-md px-48 max-[900px]:px-12 row-span-2 mt-2 flex items-center justify-end flex-col">
+      <div className="rounded-md px-48 max-[900px]:px-12 row-span-2 mt-2 flex items-center justify-around flex-col">
         {/* <FileTags /> */}
         <PromptInput setter={setMessages} />
 

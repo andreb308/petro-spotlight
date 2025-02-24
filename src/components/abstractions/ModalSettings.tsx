@@ -9,10 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  SettingsIcon,
-  BookUserIcon,
-} from "lucide-react";
+import { SettingsIcon, BookUserIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import SettingsOption from "./SettingsOption";
 import { Textarea } from "../ui/textarea";
@@ -31,7 +28,9 @@ const SettingsModal = () => {
       </DialogTrigger>
       <DialogContent className="w-[40%] ">
         <DialogHeader>
-          <DialogTitle>Configurações</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            Configurações
+          </DialogTitle>
         </DialogHeader>
         <SettingsOption
           label="Modo Avançado"

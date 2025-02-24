@@ -2,10 +2,13 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
 
-const ImageModal = ({ src = "https://placehold.co/640x360/111/222" }: { src?: string }) => {
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
+const ImageModal = ({ src = "https://placehold.co/640x360/111/222", alt = "Image" }: { src?: string, alt?: string }) => {
   return (
     <Dialog>
       <DialogTrigger className="w-full flex justify-center my-4">
@@ -24,6 +27,9 @@ const ImageModal = ({ src = "https://placehold.co/640x360/111/222" }: { src?: st
         </div> */}
       </DialogTrigger>
       <DialogContent className="w-auto p-0 flex items-center justify-center overflow-y-auto ">
+      <VisuallyHidden>
+        <DialogTitle>{alt}</DialogTitle>
+      </VisuallyHidden>
         <img
           className="max-h-[90dvh] max-w-[90dvw] rounded-lg object-contain"
           src={src}

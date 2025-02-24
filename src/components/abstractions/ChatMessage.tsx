@@ -7,6 +7,10 @@ import ImageModal from "./Modal_Image";
 import { CodeBlockDemo } from "./CodeBlockTest";
 import { Message } from "@/screens/templates/MessagesContext";
 import PopoverFeedback from "./PopoverFeedback";
+import Markdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import remarkGfm from "remark-gfm";
 
 function ChatMessage({ msg }: { msg: Message }) {
   const { message_id, role, content, timestamp, score, comment } = msg;
@@ -14,6 +18,8 @@ function ChatMessage({ msg }: { msg: Message }) {
   const [isHovering, setIsHovering] = useState(false);
   const date = new Date(timestamp);
   // const { messages, setMessages } = useMessagesContext();
+
+  
 
   return (
     <div
@@ -31,15 +37,49 @@ function ChatMessage({ msg }: { msg: Message }) {
       <div
         id="message"
         onPointerEnter={() => setIsHovering(true)}
-        onPointerLeave={() => setIsHovering(false)}
+        // onPointerLeave={() => setIsHovering(false)}
         className={` relative h-auto rounded-2xl px-4 py-3 text-gray-100 max-w-xl bg-gray-900`}
       >
-        <p className="whitespace-pre-wrap">{content}</p>
+        <Markdown
+        
+          // escapeHtml={false}
+          remarkPlugins={[remarkGfm]}
+          components={{
+            img: image => {
+              return (
+                <ImageModal
+                  src={image.src}
+                  // alt={image.alt}
+                />
+              );
+            },
+            code: props => {
+              const { children, className, node, ...rest } = props;
+              const match = /language-(\w+)/.exec(className || "");
+          
+              return match ? (
+                // @ts-expect-error
+                <SyntaxHighlighter
+                  {...rest}
+                  PreTag="div"
+                  children={String(children).replace(/\n$/, "")}
+                  language={match[1]}
+                  style={dracula}
+                />
+              ) : (
+                <code {...rest} className={className}>
+                  {children}
+                </code>
+              );
+            }
+          }}
+        >
+          {content}
+        </Markdown>
 
         {
           /* randomizing image vs code to test */
-          role === "assistant" &&
-            (!memoizedValue ? <ImageModal /> : null)
+          role === "assistant" && (!memoizedValue ? <ImageModal /> : null)
         }
 
         <div
@@ -51,7 +91,11 @@ function ChatMessage({ msg }: { msg: Message }) {
           {role === "assistant" && isHovering && (
             <div className="flex gap-2">
               <ContextModal />
-              <PopoverFeedback message_id={message_id} rating={score} feedback={comment} />
+              <PopoverFeedback
+                message_id={message_id}
+                rating={score}
+                feedback={comment}
+              />
             </div>
           )}
 

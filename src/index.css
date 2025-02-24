@@ -26,6 +26,30 @@ html,
 body {
   background: transparent;
 }
+
+table {
+  border-spacing: 0 !important;
+  border-collapse: collapse !important;
+  border-color: inherit !important;
+  display: block !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: auto !important;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit !important;
+  border-style: solid !important;
+  border-width: 2px !important;
+  padding: 0.5rem;
+}
+
 .container {
   margin: 0;
   padding-top: 10vh;

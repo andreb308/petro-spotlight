@@ -6,7 +6,10 @@ import FileTags from "@/components/abstractions/FileTags";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { useParams, useSearchParams } from "react-router";
 import { EnhancedButton } from "@/components/ui/enhanced-button";
-import { MessagesContextProvider, useMessagesContext } from "./templates/MessagesContext";
+import {
+  MessagesContextProvider,
+  useMessagesContext,
+} from "./templates/MessagesContext";
 import {
   Sidebar,
   SidebarProvider,
@@ -24,12 +27,12 @@ function Welcome() {
     <div className="h-dvh w-dvw flex items-center justify-center px-32 motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] overflow-x-visible max-[900px]:px-12 ">
       <div className="motion-preset-fade-lg size-full flex items-center justify-center flex-col">
         <h1 className="w-full text-left font-bold text-white text-3xl">
-          {"[WIP]"} Olá, bem-vindo!
+          "[WIP]" Olá, bem-vindo!
         </h1>
         <h1 className="w-full text-left font-bold text-white text-xl">
           Aqui estão alguns exemplos iniciais:
         </h1>
-        <div className="h-[15rem] w-full rounded-md flex flex-col antialiased bg-black bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+        <div className="min-h-[15rem] w-full rounded-md flex flex-col antialiased bg-black bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
           <div className="flex items-center flex-col w-full bg-zinc-800 rounded-lg p-4 gap-0 m-0">
             <PromptInput setter={setMessages} />
             <div className="flex items-center justify-start gap-2 w-full px-12">
@@ -54,22 +57,54 @@ function Welcome() {
               </EnhancedButton>
 
               {/* <button className="p-[3px] relative" onClick={() => setWebSearch(p => !p)} >
-                    <InfiniteMovingCards
-                          items={testimonials}
-                          direction="right"
-                          speed="slow"
-                      />
                     <div className={`${!webSearch && 'hidden'} motion-preset-expand absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full`} />
                     <div className="px-8 py-2  bg-black rounded-full  relative group transition duration-200 text-white ">
-                      Lit up borders
-                      </div>
+                    Lit up borders
+                    </div>
                   </button> */}
             </div>
           </div>
         </div>
+
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+        />
       </div>
     </div>
   );
 }
 
 export default Welcome;
+
+const testimonials = [
+  {
+    title: "Charles Dickens",
+    description: "A Tale of Two Cities",
+    prompt: "Lorem ipsum dolor sit amet.",
+  },
+  {
+    title: "William Shakespeare",
+    description: "Hamlet",
+    prompt: "Lorem ipsum dolor sit amet consectetur adipisicing.",
+  },
+  {
+    title: "Edgar Allan Poe",
+    description: "A Dream Within a Dream",
+    prompt:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error eos saepe atque.",
+  },
+  {
+    title: "Jane Austen",
+    description: "Pride and Prejudice",
+    prompt:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo mollitia assumenda cupiditate.",
+  },
+  {
+    title: "Herman Melville",
+    description: "Moby-Dick",
+    prompt:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nobis illo atque. Illum?",
+  },
+];
