@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Petrobras Sans, system-ui, sans-serif !important;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -22,9 +22,10 @@
   -ms-user-select: none; /* IE 10 and IE 11 */
 }
 
-html, body { background: transparent }
-
-
+html,
+body {
+  background: transparent;
+}
 .container {
   margin: 0;
   padding-top: 10vh;
@@ -39,7 +40,6 @@ html, body { background: transparent }
   justify-content: center;
 }
 
-
 button {
   cursor: pointer;
 }
@@ -49,7 +49,7 @@ button {
 }
 
 #aspect-ratio-warning {
-  display: none
+  display: none;
 }
 
 @media (max-aspect-ratio: 1.6) {
@@ -65,9 +65,23 @@ button {
     height: 100dvh;
     width: 100dvw;
   }
-  
 }
 
+@font-face {
+  font-family: "Petrobras Sans";
+  src: url("./assets/PetrobrasSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Petrobras Sans";
+  src: url("./assets/PetrobrasSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Petrobras Sans";
+  src: url("./assets/PetrobrasSans-BoldItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 700;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -149,7 +163,7 @@ button {
   }
 }
 
-    /* input,
+/* input,
     button {
       border-radius: 8px;
       border: 1px solid transparent;
@@ -162,8 +176,8 @@ button {
       transition: border-color 0.25s;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     } */
-    
-    /* @media (prefers-color-scheme: dark) {
+
+/* @media (prefers-color-scheme: dark) {
       :root {
         color: #f6f6f6;
         background-color: #2f2f2f;
@@ -179,8 +193,8 @@ button {
         background-color: #0f0f0f98;
       }
     } */
-    
-    @layer base {
+
+@layer base {
   * {
     @apply border-border;
   }
