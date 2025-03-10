@@ -1,5 +1,3 @@
-"use client";
-
 import {
   FileUploader,
   FileUploaderContent,
@@ -7,8 +5,9 @@ import {
   FileInput,
 } from "@/components/ui/file-upload";
 import { Paperclip } from "lucide-react";
-import { useFilesContext } from "@/screens/templates/FilesContext";
+import { useFilesContext } from "@/components/templates/FilesContext";
 
+// SVG component for file upload icon
 const FileSvgDraw = () => {
   return (
     <>
@@ -37,12 +36,15 @@ const FileSvgDraw = () => {
     </>
   );
 };
+
 const FileUploaderTest = () => {
+  // Get files and setFiles from context
   const { files, setFiles } = useFilesContext();
 
+  // Configuration for the dropzone
   const dropZoneConfig = {
     maxFiles: 5,
-    maxSize: 1024 * 1024 * 8,
+    maxSize: 1024 * 1024 * 8, // 8MB
     multiple: true,
   };
 
@@ -53,18 +55,27 @@ const FileUploaderTest = () => {
       dropzoneOptions={dropZoneConfig}
       className="relative bg-black text-white rounded-lg p-2"
     >
+      {/* File input area */}
       <FileInput className="outline-dashed outline-1 outline-white">
         <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full ">
           <FileSvgDraw />
         </div>
       </FileInput>
-      <FileUploaderContent className="" >
+
+      {/* Uploaded files list */}
+      <FileUploaderContent className="">
         {files &&
           files.length > 0 &&
           files.map((file, i) => (
-            <FileUploaderItem className="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-sm py-4" key={i} index={i}>
+            <FileUploaderItem 
+              className="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-sm py-4" 
+              key={i} 
+              index={i}
+            >
               <Paperclip className="h-4 w-4 stroke-current" />
-              <span className="w-48 text-nowrap overflow-hidden pr-4 text-ellipsis" >{file.name}</span>
+              <span className="w-48 text-nowrap overflow-hidden pr-4 text-ellipsis">
+                {file.name}
+              </span>
             </FileUploaderItem>
           ))}
       </FileUploaderContent>

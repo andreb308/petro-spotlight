@@ -1,5 +1,5 @@
 import ChatMessage from "@/components/abstractions/ChatMessage";
-import { PromptInput } from "@/screens/templates/PromptInput";
+import { PromptInput } from "@/components/templates/PromptInput";
 import React, { useEffect, useRef, useState } from "react";
 import { BugIcon, CheckIcon, XIcon } from "lucide-react";
 import FileTags from "@/components/abstractions/FileTags";
@@ -9,13 +9,13 @@ import { EnhancedButton } from "@/components/ui/enhanced-button";
 import {
   MessagesContextProvider,
   useMessagesContext,
-} from "./templates/MessagesContext";
+} from "../components/templates/MessagesContext";
 import {
   Sidebar,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { FilesContextProvider } from "./templates/FilesContext";
+import { FilesContextProvider } from "../components/templates/FilesContext";
 
 function Welcome() {
   const { messages, setMessages } = useMessagesContext();
@@ -24,13 +24,13 @@ function Welcome() {
   const [codeInterpreter, setCodeInterpreter] = useState(false);
 
   return (
-    <div className="h-dvh w-dvw flex items-center justify-center px-32 motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] overflow-x-visible max-[900px]:px-12 ">
+    <div className="h-dvh w-dvw flex items-center justify-center px-32 motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] overflow-x-hidden max-[900px]:px-12 ">
       <div className="motion-preset-fade-lg size-full flex items-center justify-center flex-col">
         <h1 className="w-full text-left font-bold text-white text-3xl">
-          "[WIP]" Olá, bem-vindo!
+          [WIP] Olá, Usuário!
         </h1>
         <h1 className="w-full text-left font-bold text-white text-xl">
-          Aqui estão alguns exemplos iniciais:
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
         <div className="min-h-[15rem] w-full rounded-md flex flex-col antialiased bg-black bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
           <div className="flex items-center flex-col w-full bg-zinc-800 rounded-lg p-4 gap-0 m-0">

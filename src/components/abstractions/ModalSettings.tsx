@@ -3,7 +3,6 @@ import { EnhancedButton } from "@/components/ui/enhanced-button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -11,27 +10,30 @@ import {
 } from "@/components/ui/dialog";
 import { SettingsIcon, BookUserIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import SettingsOption from "./SettingsOption";
+import SettingsOption from "./SettingSwitchOption";
 import { Textarea } from "../ui/textarea";
 
 const SettingsModal = () => {
   return (
     <Dialog>
-      {/* <DialogTrigger asChild>
-        <SettingsIcon className="hover:motion-rotate-in-[180deg] hover:motion-ease-spring-bouncier size-5 cursor-pointer" />
-      </DialogTrigger> */}
+      {/* DialogTrigger is used to open the dialog when the settings icon is clicked. */}
       <DialogTrigger className="group/settings h-12 size-full text-white hover:text-black">
-        <div className=" flex justify-center items-center text-sm group/modal-btn whitespace-pre-wrap">
+        <div className="flex justify-center items-center text-sm group/modal-btn whitespace-pre-wrap">
+          {/* Settings icon with animation effects on hover. */}
           <SettingsIcon className="group-hover/settings:motion-rotate-in-[180deg] hover:motion-ease-spring-bouncier mr-2 cursor-pointer" />
-          <span className="w-3/4  text-center">Configurações</span>
+          <span className="w-3/4 text-center">Configurações</span>
         </div>
       </DialogTrigger>
-      <DialogContent className="w-[40%] ">
+
+      {/* DialogContent defines the content of the modal, including header, settings options, and footer. */}
+      <DialogContent className="w-[40%]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             Configurações
           </DialogTitle>
         </DialogHeader>
+
+        {/* SettingsOption components to display various settings available to the user. */}
         <SettingsOption
           label="Modo Avançado"
           desc='Acompanhar o processo de "pensamento" do modelo.'
@@ -47,6 +49,8 @@ const SettingsModal = () => {
           desc='Acompanhar o processo de "pensamento" do modelo.'
           sublabel="(Experimental)"
         />
+
+        {/* Section for personalized instructions with a textarea for user input. */}
         <div className="relative flex flex-col w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5">
           <Label
             htmlFor="message-2"
@@ -61,6 +65,8 @@ const SettingsModal = () => {
           />
           <p className="text-sm text-muted-foreground">Comandos específicos.</p>
         </div>
+
+        {/* Footer of the dialog with a button to save changes. */}
         <DialogFooter>
           <EnhancedButton type="submit">Save changes</EnhancedButton>
         </DialogFooter>

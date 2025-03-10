@@ -1,4 +1,4 @@
-import { Message } from "@/screens/templates/MessagesContext";
+import { Message } from "@/components/templates/MessagesContext";
 
 const conversation: Message[] = [
   {
@@ -104,7 +104,7 @@ const conversation: Message[] = [
     user_key: "user_001",
     role: "assistant",
     content:
-      "Of course! Here's some markdown:\n\n\nA paragraph with *emphasis* and **strong importance**.\n\n> A block quote with ~strikethrough~ and a URL: https://reactjs.org.\n\n* Lists\n* [ ] todo\n* [x] done\n\nA table:\n\n| ID  | Name       | Age | Country    |\n|-----|------------|-----|------------|\n| 1   | Alice      | 28  | USA        |\n| 2   | Bob        | 34  | Canada     |\n| 3   | Charlie    | 22  | UK         |\n| 4   | Diana      | 29  | Australia  |\n| 5   | Ethan      | 31  | New Zealand|\n\nAnd we can test pictures too, look:\n![Picture of a dog.](https://placehold.co/1280x720/222/111)\n\n~~~js\nconsole.log('It works!')\n~~~\n",
+    "Of course! Here's some markdown:\n\n\nA paragraph with *emphasis* and **strong importance**.\n\n> A block quote with ~strikethrough~ and a URL: https://reactjs.org.\n\n* Lists\n* [ ] todo\n* [x] done\n\nA table:\n\n| ID  | Name       | Age | Country    |\n|-----|------------|-----|------------|\n| 1   | Alice      | 28  | USA        |\n| 2   | Bob        | 34  | Canada     |\n| 3   | Charlie    | 22  | UK         |\n| 4   | Diana      | 29  | Australia  |\n| 5   | Ethan      | 31  | New Zealand|\n\nAnd we can test pictures too, look:\n![Picture of a dog.](https://placehold.co/1280x720/222/111)\n\n~~~js\nconsole.log('It works!')\n~~~\n",
     documents: null,
     timestamp: "2023-10-03T10:04:30Z",
     score: null,

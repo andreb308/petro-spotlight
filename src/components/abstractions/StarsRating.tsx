@@ -1,7 +1,8 @@
-"use client";
-
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Rating, useMessagesContext } from "@/screens/templates/MessagesContext";
+import {
+  Rating,
+  useMessagesContext,
+} from "@/components/templates/MessagesContext";
 import { RiStarFill } from "@remixicon/react";
 import { useId, useState } from "react";
 
@@ -12,24 +13,37 @@ export default function StarsRating({
   message_id: number;
   rating: string | null;
 }) {
+  // Generate a unique ID for accessibility
   const id = useId();
+
+  // State for hover and current rating
   const [hoverRating, setHoverRating] = useState("");
   const [currentRating, setCurrentRating] = useState(rating);
+
+  // Get setMessages function from context
   const { setMessages } = useMessagesContext();
 
-
+  // Handle rating change
   const handleRating = (id: number, newRating: Rating) => {
+    // Update messages in context
     setMessages((m) =>
-      m.map((item) => ((item.role === "assistant" && item.message_id === id) ? { ...item, score: newRating } : item))
+      m.map((item) =>
+        item.role === "assistant" && item.message_id === id
+          ? { ...item, score: newRating }
+          : item
+      )
     );
-    setCurrentRating(newRating); // Update local state
+    // Update local state
+    setCurrentRating(newRating);
   };
 
   return (
     <fieldset className="motion-preset-slide-up-lg h-6 overflow-hidden">
+      {/* Commented out legend */}
       {/* <legend className="text-sm font-medium leading-none text-foreground">
         Rate your experience
       </legend> */}
+
       <RadioGroup
         className="inline-flex gap-0"
         onValueChange={(r) => handleRating(message_id, r as Rating)}
@@ -54,9 +68,10 @@ export default function StarsRating({
                   : "text-input"
               } group-hover:scale-110`}
             />
-            {/* <span className="sr-only">
+            {/* Screen reader text for accessibility */}
+            <span className="sr-only">
               {value} star{value === "1" ? "" : "s"}
-            </span> */}
+            </span>
           </label>
         ))}
       </RadioGroup>
