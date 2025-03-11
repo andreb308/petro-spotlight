@@ -53,7 +53,7 @@ import { Link } from "react-router";
 // Main function to render the application sidebar.
 export default function AppSidebar() {
   return (
-    <Sidebar collapsible="offcanvas">
+    <Sidebar className="!bg-[#29273e]" collapsible="offcanvas">
       <SidebarHeader className="motion-preset-slide-right-lg relative flex items-start flex-row justify-between px-4">
         {/* Logo component for branding */}
         <AndreIA_Logo />

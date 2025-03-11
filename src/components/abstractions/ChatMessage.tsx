@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import URL from "../../../src-tauri/icons/icon.ico";
+import URL from "../../../src/assets/logos/1 - LOGO_ÍCONE - conversa - letra A - sem fundo.png";
 import ContextModal from "./ModalContext";
 import ImageModal from "./Modal_Image";
 import { Message } from "@/components/templates/MessagesContext";
@@ -39,9 +39,7 @@ function ChatMessage({ msg }: { msg: Message }) {
       <div
         id="message"
         onPointerEnter={() => setIsHovering(true)}
-        className={`${
-          msg.role === "assistant" && "w-3/4"
-        } max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 bg-[#ffffff10]`}
+        className={`${msg.role === "assistant" && "w-3/4"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "user" ? 'bg-transparent' : 'bg-[#ffffff10]'}`}
       >
         <p className="text-muted-foreground italic font-bold ">
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
@@ -88,9 +86,33 @@ function ChatMessage({ msg }: { msg: Message }) {
             p: (props) => {
               const { children } = props;
               return (
-                <p className={`\${msg.role === 'user' && 'text-right'}`}>
+                <p className={`\${msg.role === 'user' && 'text-right'} my-6`}>
                   {children}
                 </p>
+              );
+            },
+            h1: (props) => {
+              const { children } = props;
+              return (
+                <h1 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                  {children}
+                </h1>
+              );
+            },
+            h2: (props) => {
+              const { children } = props;
+              return (
+                <h2 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                  {children}
+                </h2>
+              );
+            },
+            h3: (props) => {
+              const { children } = props;
+              return (
+                <h3 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                  {children}
+                </h3>
               );
             },
           }}

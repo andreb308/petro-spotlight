@@ -93,24 +93,33 @@ button {
 
 @font-face {
   font-family: "Petrobras Sans";
-  src: url("./assets/PetrobrasSans-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/PetrobrasSans-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Petrobras Sans";
-  src: url("./assets/PetrobrasSans-Bold.ttf") format("truetype");
+  src: url("./assets/fonts/PetrobrasSans-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 @font-face {
   font-family: "Petrobras Sans";
-  src: url("./assets/PetrobrasSans-BoldItalic.ttf") format("truetype");
+  src: url("./assets/fonts/PetrobrasSans-BoldItalic.ttf") format("truetype");
   font-style: italic;
-  font-weight: 700;
 }
 @font-face {
   font-family: "Petrobras Sans";
-  src: url("./assets/PetrobrasSans-It.ttf") format("truetype");
+  src: url("./assets/fonts/PetrobrasSans-It.ttf") format("truetype");
   font-style: italic;
 }
+@font-face {
+  font-family: "Hero";
+  src: url("./assets/fonts/Hero-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Hero";
+  src: url("./assets/fonts/Hero-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
