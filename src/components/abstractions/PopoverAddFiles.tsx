@@ -23,7 +23,7 @@ function AddFilesPopover() {
         >
           {/* Number of files as a badge if there are any. */}
           {!!files?.length && (
-            <span className="absolute bottom-0 right-0 flex justify-center items-center text-xs p-1.5 z-[51] rounded-full bg-red-600 size-2 text-white">
+            <span className="absolute bottom-0 right-0 flex justify-center items-center text-xs p-1.5 z-[51] rounded-full bg-red-600 size-2 text-foreground">
               {files.length}
             </span>
           )}

@@ -6,7 +6,7 @@ import {
   AccordionTrigger, 
 } from "@/components/ui/accordion";
 import { SquareFunctionIcon } from "lucide-react";
-import { DialogTitle } from "../ui/dialog";
+import { DialogHeader, DialogTitle } from "../ui/dialog";
 
 // Define the list of tools with their descriptions
 const toolList = [
@@ -25,11 +25,13 @@ const toolList = [
 
 export default function ToolsAccordion() {
   return (
-    <div className="space-y-4 w-full ">
+    <div className="space-y-4 w-full">
       {/* Title of the accordion */}
+      <DialogHeader>
       <DialogTitle className="text-2xl font-bold">
         Bases de Conhecimento
       </DialogTitle>
+      </DialogHeader>
       
       {/* Accordion component */}
       <Accordion 

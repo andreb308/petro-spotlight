@@ -21,18 +21,19 @@ export default function StarsRating({
   const [currentRating, setCurrentRating] = useState(rating);
 
   // Get setMessages function from context
-  const { setMessages } = useMessagesContext();
+  const { setCurrentConversation } = useMessagesContext();
 
   // Handle rating change
-  const handleRating = (id: number, newRating: Rating) => {
+  const handleRating = (message_id: number, newRating: Rating) => {
     // Update messages in context
-    setMessages((m) =>
-      m.map((item) =>
-        item.role === "assistant" && item.message_id === id
-          ? { ...item, score: newRating }
-          : item
-      )
-    );
+    setCurrentConversation((m) => {
+      const newMessages = m.messages.map((item) =>
+        item.message_id === message_id ? { ...item, score: newRating } : item
+      );
+
+      return { ...m, messages: newMessages };
+    });
+
     // Update local state
     setCurrentRating(newRating);
   };

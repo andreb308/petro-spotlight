@@ -9,7 +9,7 @@ import React, {
 } from "react";
 
 // Importing initial conversation data from a specified path.
-import conversation from "@/lib/conversation"
+import { getConversationById, Conversation } from "@/lib/conversation";
 
 // Defining a type for rating, which can be a string from "1" to "5".
 export type Rating = "1" | "2" | "3" | "4" | "5";
@@ -28,8 +28,8 @@ export type Message = {
 
 // Interface to define the structure of the messages context.
 interface MessagesContextInterface {
-  messages: Message[] | null; // Array of messages or null.
-  setMessages: Dispatch<SetStateAction<Message[]>>; // Function to update the messages state.
+  currentConversation: Conversation; // Array of messages or null.
+  setCurrentConversation: Dispatch<SetStateAction<Conversation>>; // Function to update the messages state.
 }
 
 // Creating the messages context with an initial null value.
@@ -37,12 +37,14 @@ const MessagesContext = createContext<MessagesContextInterface | null>(null);
 
 // Context provider that manages the messages state and makes it available to child components.
 export const MessagesContextProvider: React.FC<any> = ({ children }) => {
-  const [messages, setMessages] = useState<Message[]>(conversation); // Initializing messages state with conversation data.
+  const [currentConversation, setCurrentConversation] = useState<Conversation>(
+    getConversationById(-1) || {} as Conversation
+  ); // Initializing messages state with conversation data.
 
   return (
-      <MessagesContext.Provider value={{messages, setMessages}}>
-          {children}
-      </MessagesContext.Provider>
+    <MessagesContext.Provider value={{ currentConversation, setCurrentConversation }}>
+      {children}
+    </MessagesContext.Provider>
   );
 };
 
@@ -50,7 +52,9 @@ export const MessagesContextProvider: React.FC<any> = ({ children }) => {
 export const useMessagesContext = () => {
   const context = useContext(MessagesContext);
   if (!context) {
-      throw new Error("useMessagesContext must be used within a MessagesContextProvider");
+    throw new Error(
+      "useMessagesContext must be used within a MessagesContextProvider"
+    );
   }
   return context;
 };

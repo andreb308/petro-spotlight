@@ -10,8 +10,9 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 import { saveAs } from "file-saver";
-import { DownloadCloudIcon } from "lucide-react";
+import { CopyIcon, DownloadCloudIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import { EnhancedButton } from "../ui/enhanced-button";
 
 type TableRow = { [key: string]: string };
 
@@ -23,7 +24,7 @@ function ChatMessage({ msg }: { msg: Message }) {
 
   return (
     <div
-      className={`select-text selection:text-black selection:bg-white motion-preset-fade w-full flex flex-row gap-2 ${
+      className={`select-text selection:text-black selection:bg-white motion-preset-fade-lg w-full flex flex-row gap-2 max-lg:gap-0 max-lg:w-dvw max-lg:px-4 ${
         role === "user" && "flex-row-reverse my-4"
       }`}
     >
@@ -39,11 +40,13 @@ function ChatMessage({ msg }: { msg: Message }) {
       <div
         id="message"
         onPointerEnter={() => setIsHovering(true)}
-        className={`${msg.role === "assistant" && "w-3/4"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "user" ? 'bg-transparent' : 'bg-[#ffffff10]'}`}
+        className={`${msg.role === "assistant" && "w-3/4 max-lg:w-full"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"}`}
       >
         <p className="text-muted-foreground italic font-bold ">
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
         </p>
+
+        <EnhancedButton title="Copiar Mensagem" onClick={() => navigator.clipboard.writeText(content)} className="absolute top-2 right-2 size-auto p-2 bg-transparent hover:bg-black"><CopyIcon /></EnhancedButton>
 
         {/* Markdown rendering */}
 
@@ -64,8 +67,10 @@ function ChatMessage({ msg }: { msg: Message }) {
                 <SyntaxHighlighter
                   {...rest}
                   wrapLongLines
+                  className="max-lg:max-w-[70vw]"
                   PreTag="div"
                   children={String(children).replace(/\n\\$/, "")}
+                  showLineNumbers={true}
                   language={match[1]}
                   style={dracula}
                 />
@@ -86,7 +91,7 @@ function ChatMessage({ msg }: { msg: Message }) {
             p: (props) => {
               const { children } = props;
               return (
-                <p className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                <p className={`my-6 ${msg.role === 'user' ? 'text-right ' : ""}`}>
                   {children}
                 </p>
               );
@@ -94,7 +99,7 @@ function ChatMessage({ msg }: { msg: Message }) {
             h1: (props) => {
               const { children } = props;
               return (
-                <h1 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                <h1 className={`my-6 text-2xl ${msg.role === 'user' ? 'text-right ' : ""}`}>
                   {children}
                 </h1>
               );
@@ -102,7 +107,7 @@ function ChatMessage({ msg }: { msg: Message }) {
             h2: (props) => {
               const { children } = props;
               return (
-                <h2 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                <h2 className={`my-6 text-xl ${msg.role === 'user' ? 'text-right ' : ""}`}>
                   {children}
                 </h2>
               );
@@ -110,7 +115,7 @@ function ChatMessage({ msg }: { msg: Message }) {
             h3: (props) => {
               const { children } = props;
               return (
-                <h3 className={`\${msg.role === 'user' && 'text-right'} my-6`}>
+                <h3 className={`my-6 text-lg ${msg.role === 'user' ? 'text-right ' : ""}`}>
                   {children}
                 </h3>
               );
@@ -149,7 +154,6 @@ function ChatMessage({ msg }: { msg: Message }) {
   );
 }
 
-export default ChatMessage;
 
 // Function to convert table data to CSV
 const convertToCSV = (tableData: string[][]): string => {
@@ -189,13 +193,15 @@ const TableComponent: React.FC<TableComponentProps> = ({ children }) => {
     <div>
       <table
         ref={tableRef}
-        className="table-auto relative bg-bla w-full text-left whitespace-nowrap"
+        className="table-auto relative !border-[hsl(var(--foreground))] w-full text-left whitespace-nowrap"
       >
         {children}
       </table>
-      <Button onClick={handleDownload}>
+      <EnhancedButton onClick={handleDownload}>
         <DownloadCloudIcon /> Baixar como CSV
-      </Button>
+      </EnhancedButton>
     </div>
   );
 };
+
+export default ChatMessage;

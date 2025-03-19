@@ -12,7 +12,7 @@ const ToolsModal = () => {
   return (
     <Dialog>
       {/* Open the dialog when the icon is clicked. Trigger changes text color on hover and includes an animation effect. */}
-      <DialogTrigger asChild className="w-full h-12 text-white hover:text-black">
+      <DialogTrigger asChild className="w-full h-12 text-foreground hover:text-black">
 
         <div className="group/settings w-full flex justify-center items-center text-sm group/modal-btn">
           {/* Info icon with animation effects on hover, rotating 720 degrees. */}
@@ -24,7 +24,7 @@ const ToolsModal = () => {
       </DialogTrigger>
 
       {/* DialogContent defines the content of the modal, including a tools accordion for displaying knowledge bases. */}
-      <DialogContent className="max-h-[90dvh] w-[50dvw] overflow-y-auto">
+      <DialogContent className="max-h-[90dvh] w-[50dvw] overflow-y-auto max-lg:w-[90%] max-[900px]:h-3/4" aria-describedby="Bases de conhecimento da ferramenta.">
         <ToolsAccordion /> {/* // Component to display a list of tools or knowledge bases in an accordion format. */}
       </DialogContent>
     </Dialog>

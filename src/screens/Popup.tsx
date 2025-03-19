@@ -89,7 +89,7 @@ function Popup() {
       />
       {/* Close button */}
       <button
-        className="absolute font-semibold top-2 right-2 p-0 size-7 text-black hover:text-white flex items-center justify-center bg-gray-200 hover:bg-gray-800 shadow-none rounded-full border-white border-[1px]"
+        className="absolute font-semibold top-2 right-2 p-0 size-7 text-black hover:text-foreground flex items-center justify-center bg-gray-200 hover:bg-gray-800 shadow-none rounded-full border-white border-[1px]"
         onClick={() => invoke("close")}
       >
         <span className=" mt-0.5">X</span>

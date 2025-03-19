@@ -5,17 +5,19 @@ import { PromptInput } from "@/components/templates/PromptInput";
 import React, { useEffect, useRef, useState } from "react";
 import { useMessagesContext } from "../components/templates/MessagesContext";
 import { useParams, useSearchParams } from "react-router";
+import { getConversationById, Conversation } from "@/lib/conversation";
 
 function ChatWrapper() {
   // Reference to the chat container for scrolling
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   // Check if it's the home page
-  const chatId = useParams().chatId;
+  const params = useParams()
+  const chatId = parseInt(String(params.chatId)) || 0;
   const isHomePage = !chatId;
 
   // Get messages and setMessages from context
-  const { messages, setMessages } = useMessagesContext();
+  const { currentConversation, setCurrentConversation } = useMessagesContext();
   
   // TO DO: Fetch from API based on chatId and return the message history. Currently hardcoded and imported from the 'conversations.ts' and 'MessagesContext.tsx' files.
   
@@ -27,46 +29,58 @@ function ChatWrapper() {
 
   useEffect(() => {
     // const response = await api.get<Message[]>("/", { params: { chatId } }).then((response) => response.data);
-    // setMessages(response);
+    const response = getConversationById(chatId)
+    setCurrentConversation(response);
 
-    setTimeout(() => {
-      chatContainerRef.current!.scrollTop =
-        chatContainerRef.current!.scrollHeight;
-    }, 100);
-  }, [messages?.length]);
+  }, [chatId]);
+
+useEffect( () => {
+  setTimeout(() => {
+    chatContainerRef.current!.scrollTop =
+      chatContainerRef.current!.scrollHeight;
+  }, 100);
+}, [currentConversation.id, currentConversation.messages.length] )
 
   return (
-    <MessagesContextProvider>
-      <div className="h-dvh py-4 w-full bg-[#29273e] grid grid-cols-1 grid-rows-12">
+      <div className="h-dvh py-4 w-full bg-background grid grid-cols-1 grid-rows-12 ">
         {/* Chat messages container */}
         <div
-          className="motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] overflow-x-visible max-[900px]:px-12 rounded-md row-span-10 gap-12 flex flex-col p-12 overflow-y-auto"
+          className="motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] overflow-x-visible max-[900px]:px-12 rounded-md row-span-10 gap-12 flex flex-col p-12 overflow-y-auto max-lg:w-full max-lg:p-0"
           style={{ scrollbarColor: "white black" }}
           ref={chatContainerRef}
         >
-          {messages && (
+          {currentConversation && currentConversation.messages.length ? (
             <>
-              <div className="size-full px-24 flex flex-col gap-8">
-                {messages.map((m, i) => (
+              <div className="size-full px-24 flex flex-col gap-8 max-lg:px-0 max-lg:gap-2">
+                {currentConversation.messages.map((m, i) => (
                   <ChatMessage key={m.timestamp} msg={m} />
                 ))}
               </div>
             </>
+          ) : (
+            // Div with Error message
+            <div className="size-full flex items-center justify-center">
+              <h1 className="text-3xl text-center font-bold text-foreground">Houve um erro ao carregar as mensagens.</h1>
+            </div>
           )}
         </div>
 
         {/* Input area */}
-        <div className="rounded-md px-48 max-[900px]:px-12 row-span-2 mt-2 flex items-center justify-around flex-col">
+        {/* NOTA: Utilizar '&&' em vez do operador '?' acaba renderizando o length (0) na tela. Não alterar. */}
+        {(currentConversation && currentConversation.messages.length) ? (<div className="rounded-md px-48 max-lg:px-4 row-span-2 mt-2 flex items-center justify-around flex-col">
           {/* <FileTags /> */}
-          <PromptInput setter={setMessages} />
+          <PromptInput setter={setCurrentConversation} />
           {/* Disclaimer */}
-          <p className="motion-preset-slide-up-lg motion-delay-500 text-muted-foreground mt-2 text-center text-sm">
-            As respostas da Andre.IA foram geradas por Inteligência Artificial.
-            Erros podem ocorrer.
+          <p className="motion-preset-slide-up-lg motion-delay-500 text-muted-foreground mt-2 text-center text-sm max-lg:m-0">
+          A Andre.IA pode cometer erros: verifique sempre as respostas nas fontes oficiais. <br/>
+          Não inclua informações ou arquivos confidenciais.
+          {/* As respostas da Andre.IA foram geradas por Inteligência Artificial.
+            Erros podem ocorrer. */}
           </p>
-        </div>
+        </div>) : null}
+        
+        
       </div>
-    </MessagesContextProvider>
   );
 }
 

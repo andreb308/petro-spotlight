@@ -53,7 +53,7 @@ import { Link } from "react-router";
 // Main function to render the application sidebar.
 export default function AppSidebar() {
   return (
-    <Sidebar className="!bg-[#29273e]" collapsible="offcanvas">
+    <Sidebar collapsible="offcanvas">
       <SidebarHeader className="motion-preset-slide-right-lg relative flex items-start flex-row justify-between px-4">
         {/* Logo component for branding */}
         <AndreIA_Logo />
@@ -72,6 +72,18 @@ export default function AppSidebar() {
                   <Link to={"/chat/13"} className="group/item">
                     <MessagesSquareIcon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
                     <span>Conversa 1</span>
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link to={"/chat/14"} className="group/item">
+                    <MessagesSquareIcon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
+                    <span>Conversa 2</span>
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link to={"/chat/15"} className="group/item">
+                    <MessagesSquareIcon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
+                    <span>Conversa 3</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -105,7 +117,7 @@ export default function AppSidebar() {
                   <AvatarImage src="https://placehold.co/32" />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
-                Nome de Usuário
+                <span className="text-center w-full">Nome de Usuário</span>
                 <ChevronUp className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>

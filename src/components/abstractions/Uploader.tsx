@@ -53,7 +53,7 @@ const FileUploaderTest = () => {
       value={files}
       onValueChange={setFiles}
       dropzoneOptions={dropZoneConfig}
-      className="relative bg-black text-white rounded-lg p-2"
+      className="relative bg-black text-foreground rounded-lg p-2"
     >
       {/* File input area */}
       <FileInput className="outline-dashed outline-1 outline-white">

@@ -216,7 +216,7 @@ export function PopupInput({
         value={value}
         type="text"
         className={cn(
-          "w-full relative text-[.8rem] sm:text-[.85rem] z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-6 pr-4",
+          "w-full relative text-[.8rem] sm:text-[.85rem] z-50 border-none dark:text-foreground bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-6 pr-4",
           animating && "text-transparent dark:text-transparent"
         )}
       />

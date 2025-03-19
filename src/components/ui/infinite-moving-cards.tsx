@@ -81,13 +81,12 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          start && "animate-scroll [animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
           <li
-            className="w-[300px] h-[200px] max-w-full relative rounded-2xl flex flex-col gap-4 border flex-shrink-0 border-slate-700 px-8 py-6"
+            className="w-[300px] h-[200px] max-w-full relative rounded-2xl flex flex-col gap-2 border flex-shrink-0 border-slate-700 px-8 py-6"
             style={{
               background:
                 "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
@@ -99,12 +98,12 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <div className="relative z-20 flex flex-row items-center">
+              <div className="relative z-20 flex flex-row items-center justify-start">
                 <span className="flex flex-col gap-1">
-                  <span className=" text-xl leading-[1.6] text-white font-normal">
+                  <span className="text-xl leading-[1] text-foreground font-normal">
                     {item.title}
                   </span>
-                  <span className=" text-sm leading-[1.6] text-white font-normal">
+                  <span className=" text-sm leading-[1.6] text-foreground font-normal">
                     {item.description}
                   </span>
                 </span>

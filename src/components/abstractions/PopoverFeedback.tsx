@@ -7,6 +7,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import StarsRating from "./StarsRating";
 import { StarIcon } from "lucide-react";
+import { useState } from "react";
 
 // PopoverFeedback component for collecting user feedback on messages
 export default function PopoverFeedback({
@@ -18,6 +19,8 @@ export default function PopoverFeedback({
   rating: string | null;
   feedback: string | null;
 }) {
+
+  const [userFeedback, setUserFeedback] = useState(feedback ?? "")
   return (
     <div className="flex flex-col gap-4">
       <Popover>
@@ -41,7 +44,8 @@ export default function PopoverFeedback({
               id="feedback"
               placeholder="O que achou da resposta?"
               aria-label="Send feedback"
-              value={feedback ?? ""}
+              onChange={(e) => setUserFeedback(e.target.value)}
+              value={userFeedback}
             />
 
             {/* Submit button */}
