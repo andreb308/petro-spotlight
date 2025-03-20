@@ -27,7 +27,7 @@ const ContextModal = ({ hover = true }: { hover?: Boolean }) => {
       </DialogTrigger>
 
       {/* DialogContent defines the content of the modal, including header, body, and footer. */}
-      <DialogContent className="w-1/2 max-lg:w-[90%] max-lg:h-3/4 max-lg:overflow-y-auto scrollbar max-lg:rounded-lg p-8">
+      <DialogContent className="w-1/2 max-sm:w-[90%] max-h-3/4 max-sm:overflow-y-auto max-sm:rounded-lg max-sm:h-3/4 sm:max-lg:w-4/5 p-8 sm:max-lg:overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Lorem ipsum dolor sit amet.</DialogTitle>
         </DialogHeader>

@@ -24,7 +24,7 @@ function ChatMessage({ msg }: { msg: Message }) {
 
   return (
     <div
-      className={`select-text selection:text-black selection:bg-white motion-preset-fade-lg w-full flex flex-row gap-2 max-lg:gap-0 max-lg:w-dvw max-lg:px-4 ${
+      className={`select-text selection:text-black selection:bg-white motion-preset-fade-lg w-full flex flex-row gap-2 max-sm:gap-0 max-sm:w-dvw max-sm:px-4 ${
         role === "user" && "flex-row-reverse my-4"
       }`}
     >
@@ -40,7 +40,7 @@ function ChatMessage({ msg }: { msg: Message }) {
       <div
         id="message"
         onPointerEnter={() => setIsHovering(true)}
-        className={`${msg.role === "assistant" && "w-3/4 max-lg:w-full"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"}`}
+        className={`${msg.role === "assistant" && "w-3/4 max-sm:w-full sm:max-lg:w-[90%]"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"}`}
       >
         <p className="text-muted-foreground italic font-bold ">
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
@@ -67,7 +67,7 @@ function ChatMessage({ msg }: { msg: Message }) {
                 <SyntaxHighlighter
                   {...rest}
                   wrapLongLines
-                  className="max-lg:max-w-[70vw]"
+                  className="max-sm:max-w-[70vw]"
                   PreTag="div"
                   children={String(children).replace(/\n\\$/, "")}
                   showLineNumbers={true}

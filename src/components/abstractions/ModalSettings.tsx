@@ -26,7 +26,7 @@ const SettingsModal = () => {
       </DialogTrigger>
 
       {/* DialogContent defines the content of the modal, including header, settings options, and footer. */}
-      <DialogContent className="w-[40%] max-lg:w-[95%] px-8 max-[900px]:h-[85%]  overflow-y-auto" aria-describedby="Configurações de usuário">
+      <DialogContent className="w-1/2 max-sm:w-[90%] max-h-3/4 max-sm:overflow-y-auto max-sm:rounded-lg sm:max-lg:w-4/5 p-8 sm:max-lg:overflow-y-auto" aria-describedby="Configurações de usuário">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             Configurações

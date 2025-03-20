@@ -16,10 +16,10 @@ ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <BrowserRouter>
       <FilesContextProvider>
-        <SidebarProvider className="bg-background">
+        <SidebarProvider className="bg-background overflow-hidden">
           {/* <MessagesContextProvider> */}
           <Sidebar />
-          <SidebarTrigger className="motion-preset-slide-down-sm motion-delay-1000 text-foreground size-10 absolute top-2 left-2 z-[200]" />
+          <SidebarTrigger className="motion-preset-slide-down-sm motion-delay-1000 text-foreground size-10 absolute top-2 left-2 z-[250]" />
 
           {/* 
               Define the application's routes.
