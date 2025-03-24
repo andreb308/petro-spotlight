@@ -21,6 +21,7 @@ export default function PopoverFeedback({
 }) {
 
   const [userFeedback, setUserFeedback] = useState(feedback ?? "")
+  
   return (
     <div className="flex flex-col gap-4">
       <Popover>
@@ -32,7 +33,7 @@ export default function PopoverFeedback({
         </PopoverTrigger>
 
         {/* Popover content - Feedback form */}
-        <PopoverContent className="w-72">
+        <PopoverContent className="w-72 bg-sidebar text-foreground border-input">
           <h2 className="mb-2 text-sm font-semibold">Avalie a resposta:</h2>
           <form className="space-y-3">
             {/* Star rating component */}

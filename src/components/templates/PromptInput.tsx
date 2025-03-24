@@ -48,7 +48,7 @@ export function PromptInput({
     }
     else {
       setCurrentConversation((prevConversation => {
-        console.log('previus', prevConversation);
+        console.log('previous', prevConversation);
         
         const newMessageId = prevConversation.messages.length > 0 
           ? prevConversation.messages[prevConversation.messages.length - 1].message_id + 1 

@@ -66,7 +66,7 @@ export default function StarsRating({
               className={`transition-all ${
                 (currentRating || hoverRating) >= value
                   ? "text-amber-500"
-                  : "text-input"
+                  : "text-muted-foreground"
               } group-hover:scale-110`}
             />
             {/* Screen reader text for accessibility */}

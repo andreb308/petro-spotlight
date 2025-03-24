@@ -93,7 +93,7 @@ button {
 }
 @font-face {
   font-family: "Petrobras Sans";
-  src: url("./assets/fonts/PetrobrasSans-It.ttf") format("truetype");
+  src: url("./assets/fonts/PetrobrasSans_It.ttf") format("truetype");
   font-style: italic;
 }
 @font-face {
