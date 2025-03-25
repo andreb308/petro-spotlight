@@ -1,15 +1,6 @@
 // Importing various icons from the lucide-react library for use in the sidebar.
 import {
-  Calendar,
-  Home,
-  Inbox,
-  Search,
-  Settings,
-  ChevronUp,
-  SettingsIcon,
-  Bug,
-  PlayCircleIcon,
-  MessagesSquareIcon,
+  ChevronUp, MessagesSquareIcon
 } from "lucide-react";
 
 // Importing avatar components for user profile display.
@@ -33,10 +24,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuItem, DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
 // Importing modal components for tools and settings.
@@ -44,7 +32,6 @@ import ToolsModal from "../abstractions/ModalTools";
 import SettingsModal from "../abstractions/ModalSettings";
 
 // Importing logo assets for branding.
-import LogoURL from "@/assets/AndreIA-Logo-TEST.svg";
 import AndreIA_Logo from "@/assets/AndreIA-Logo-Component";
 
 // Importing Link component for navigation.
@@ -114,7 +101,7 @@ export default function AppSidebar() {
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton className="h-12">
                 <Avatar className="size-8">
-                  <AvatarImage src="https://placehold.co/32" />
+                  <AvatarImage src="https://github.com/andreb308.png" />
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <span className="text-center w-full">Nome de Usuário</span>
@@ -126,13 +113,13 @@ export default function AppSidebar() {
               className="w-[--radix-popper-anchor-width]"
             >
               <DropdownMenuItem>
-                <span>Account</span>
+                <span>Opção 1</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <span>Billing</span>
+                <span>Opção 2</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <span>Sign out</span>
+                <span>Opção 3</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

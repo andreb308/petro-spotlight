@@ -1,17 +1,10 @@
-import React, { useRef, useState, useCallback } from "react";
+import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import URL from "../../../src/assets/logos/1 - LOGO_ÍCONE - conversa - letra A - sem fundo.png";
 import ContextModal from "../abstractions/ModalContext";
-import ImageModal from "../abstractions/Modal_Image";
 import { Message } from "@/components/templates/MessagesContext";
 import PopoverFeedback from "../abstractions/PopoverFeedback";
-import Markdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import remarkGfm from "remark-gfm";
-import { saveAs } from "file-saver";
-import { CopyIcon, DownloadCloudIcon } from "lucide-react";
-import { Button } from "../ui/button";
+import { CopyIcon } from "lucide-react";
 import { EnhancedButton } from "../ui/enhanced-button";
 import MarkdownParser from "../abstractions/MarkdownParser";
 
@@ -43,7 +36,7 @@ function ChatMessage({ msg }: { msg: Message }) {
         onPointerEnter={() => setIsHovering(true)}
         className={`${msg.role === "assistant" && "w-3/4 max-sm:w-full sm:max-lg:w-[90%]"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"}`}
       >
-        <p className="text-muted-foreground italic font-bold ">
+        <p className="text-muted-foreground italic font-bold">
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
         </p>
 

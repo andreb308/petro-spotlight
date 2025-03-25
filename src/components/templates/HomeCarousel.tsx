@@ -7,8 +7,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useNavigate } from "react-router";
 
 function HomeCarousel() {
+  let navigate = useNavigate();
+
   return (
     <Carousel
       opts={{
@@ -26,9 +29,13 @@ function HomeCarousel() {
     >
       <CarouselContent>
         {testimonials.map((item, idx) => (
-          <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
+          <CarouselItem
+            onClick={() => navigate(`/chat/16?prompt=${item.prompt}`)}
+            key={idx}
+            className="md:basis-1/2 lg:basis-1/3"
+          >
             <li
-              className="w-[600px] h-[200px] max-w-full relative rounded-2xl flex flex-col gap-2 border flex-shrink-0 border-slate-700 bg-sidebar px-8 py-6"
+              className="w-[600px] h-[200px] cursor-pointer max-w-full relative rounded-2xl flex flex-col gap-2 border flex-shrink-0 border-slate-700 bg-sidebar px-8 py-6"
               // style={{
               //   background:
               //     "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
