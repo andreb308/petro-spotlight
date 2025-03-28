@@ -24,7 +24,7 @@ const ToolsModal = () => {
       </DialogTrigger>
 
       {/* DialogContent defines the content of the modal, including a tools accordion for displaying knowledge bases. */}
-      <DialogContent className="w-1/2 max-sm:w-[90%] max-h-3/4 max-sm:overflow-y-auto max-sm:rounded-lg  max-sm:h-3/4 sm:max-lg:w-4/5 p-8 sm:max-lg:overflow-y-auto" aria-describedby="Bases de conhecimento da ferramenta.">
+      <DialogContent className="w-1/2 max-sm:w-[90%] max-h-[80%] overflow-y-auto max-sm:overflow-y-auto max-sm:rounded-lg  max-sm:h-3/4 sm:max-lg:w-4/5 p-8 sm:max-lg:overflow-y-auto" aria-describedby="Bases de conhecimento da ferramenta.">
       {/* <DialogContent className="max-h-[90dvh] w-[50dvw] overflow-y-auto max-sm:w-[90%] max-[900px]:h-3/4" aria-describedby="Bases de conhecimento da ferramenta."> */}
         <ToolsAccordion /> {/* // Component to display a list of tools or knowledge bases in an accordion format. */}
       </DialogContent>
