@@ -85,6 +85,7 @@ export const CodeBlock = ({
           </div>
         )}
       </div>
+      {/* @ts-expect-error */}
       <SyntaxHighlighter
         language={activeLanguage}
         style={atomDark}
