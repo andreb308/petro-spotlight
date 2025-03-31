@@ -40,7 +40,7 @@ function ChatMessage({ msg }: { msg: Message }) {
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
         </p>
 
-        <EnhancedButton title="Copiar Mensagem" onClick={() => navigator.clipboard.writeText(content)} className="absolute top-2 right-2 size-auto p-2 bg-transparent hover:bg-black"><CopyIcon /></EnhancedButton>
+        
 
         {/* Markdown rendering */}
 
@@ -60,12 +60,13 @@ function ChatMessage({ msg }: { msg: Message }) {
             {date.toLocaleString("pt-BR")}
           </p>
           {role === "assistant" && isHovering && (
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <PopoverFeedback
                 message_id={message_id}
                 rating={score}
                 feedback={comment}
               />
+              <EnhancedButton title="Copiar Mensagem" onClick={() => navigator.clipboard.writeText(content)} className="size-auto p-2 bg-transparent text-muted-foreground hover:bg-black"><CopyIcon /></EnhancedButton>
               <ContextModal />
             </div>
           )}

@@ -148,16 +148,16 @@ const TableComponent: React.FC<TableComponentProps> = ({ children }) => {
   }, []);
 
   return (
-    <div>
+    <div className="relative pb-10">
       <table
         ref={tableRef}
-        className="table-auto relative !border-[hsl(var(--foreground))] w-full text-left whitespace-nowrap"
+        className="table-auto !border-[hsl(var(--foreground))] w-full text-left whitespace-nowrap"
       >
         {children}
-      </table>
-      <EnhancedButton className="group/csv" onClick={handleDownload}>
-        <DownloadCloudIcon className="group-hover/csv:motion-preset-pulse motion-loop-once motion-duration-500" /> Baixar como CSV
+      <EnhancedButton className="group/csv absolute bottom-0 left-0" onClick={handleDownload}>
+        <DownloadCloudIcon xlinkTitle="Baixar como CSV" className="group-hover/csv:motion-preset-pulse motion-loop-once motion-duration-500" /> Baixar CSV
       </EnhancedButton>
+      </table>
     </div>
   );
 };

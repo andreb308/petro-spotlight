@@ -39,7 +39,7 @@ export default function StarsRating({
   };
 
   return (
-    <fieldset className="motion-preset-slide-up-lg h-6 overflow-hidden">
+    <fieldset className="motion-preset-slide-right-sm h-6 overflow-hidden">
       {/* Commented out legend */}
       {/* <legend className="text-sm font-medium leading-none text-foreground">
         Rate your experience
