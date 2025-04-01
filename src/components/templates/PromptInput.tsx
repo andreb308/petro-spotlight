@@ -5,6 +5,8 @@ import { Message, useMessagesContext } from "./MessagesContext";
 import { useParams, useNavigate } from "react-router";
 import { addMessageToConversation, Conversation } from "@/lib/conversation";
 import { log } from "console";
+import { EnhancedButton } from "../ui/enhanced-button";
+import { CheckIcon } from "lucide-react";
 
 // Function component for the input prompt, which takes a setter function as a prop.
 export function PromptInput({
@@ -15,6 +17,8 @@ export function PromptInput({
   // State to manage the input value.
   const [value, setValue] = useState("");
   const chatId = parseInt(String(useParams().chatId));
+  const [webSearch, setWebSearch] = useState(false);
+  const [codeInterpreter, setCodeInterpreter] = useState(false);
   const { currentConversation, setCurrentConversation } = useMessagesContext();
 
   
@@ -78,12 +82,49 @@ export function PromptInput({
 
   // Rendering the input component with placeholders, change handler, submit handler, and value management.
   return (
-    <PlaceholdersAndVanishInput
-      placeholders={placeholders}
-      onChange={handleChange}
-      onSubmit={onSubmit}
-      value={value}
-      setValue={setValue}
-    />
+    <div className="w-full rounded-md flex flex-col antialiased bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+    <div className="flex items-center flex-col w-full bg-zinc-800 rounded-lg py-2 gap-0 m-0">
+      {/* onSubmit: sends the message to the API to start a new chat and move the URL to the new page */}
+      {/* //@ts-ignore */}
+      <PlaceholdersAndVanishInput
+        placeholders={placeholders}
+        onChange={handleChange}
+        onSubmit={onSubmit}
+        value={value}
+        setValue={setValue}
+      />
+
+      <div className="flex items-center justify-start gap-2 w-full px-12">
+        <EnhancedButton
+          onClick={() => setWebSearch((p) => !p)}
+          className={`rounded-full py-1 h-8 border-[0.5px] border-white ${
+            !webSearch && "bg-transparent"
+          }`}
+          // effect="shineHover"
+        >
+          {webSearch && <CheckIcon />}Web Search
+        </EnhancedButton>
+
+        <EnhancedButton
+          onClick={() => setCodeInterpreter((p) => !p)}
+          className={`rounded-full py-1 h-8 border-[0.5px] border-white ${
+            !codeInterpreter && "bg-transparent"
+          }`}
+          // effect="shineHover"
+        >
+          {codeInterpreter && <CheckIcon />}Code Interpreter
+        </EnhancedButton>
+
+      </div>
+    </div>
+  </div>
   );
 }
+
+
+{/* <button className="p-[3px] relative" onClick={() => setWebSearch(p => !p)} >
+  <div className={`${!webSearch && 'hidden'} motion-preset-expand absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full`} />
+  <div className="px-8 py-2  bg-black rounded-full  relative group transition duration-200 text-foreground ">
+  Borders Test
+  </div>
+  </button> */}

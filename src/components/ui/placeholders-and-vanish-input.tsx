@@ -130,7 +130,7 @@ export function PlaceholdersAndVanishInput({
   return (
     <form
       className={cn(
-        "motion-preset-slide-up-lg motion-delay-500 w-full relative mx-auto bg-zinc-800 h-12 rounded-full overflow-hidden transition duration-200",
+        "motion-preset-slide-up-lg motion-delay-500 w-full relative mx-auto bg-transparent h-12 rounded-full overflow-hidden transition duration-200",
         value && "bg-zinc-800"
       )}
       // shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] 

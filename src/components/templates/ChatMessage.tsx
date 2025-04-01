@@ -47,19 +47,17 @@ function ChatMessage({ msg }: { msg: Message }) {
         <MarkdownParser role={role} content={content} />
 
         {/* Message footer */}
+        {role === "assistant" && isHovering && (
         <div
           id="footer"
-          className={`mt-2 flex flex-row items-center justify-${
-            role !== "user" ? "start" : "end"
-          } gap-2`}
+          className={`mt-2 flex flex-row items-center justify-end gap-2`}
         >
-          <p
+          {/* <p
             className={`text-xs text-zinc-400 h-6 flex items-center justify-center`}
             id="timestamp"
           >
             {date.toLocaleString("pt-BR")}
-          </p>
-          {role === "assistant" && isHovering && (
+          </p> */}
             <div className="flex gap-2 items-center">
               <PopoverFeedback
                 message_id={message_id}
@@ -69,8 +67,8 @@ function ChatMessage({ msg }: { msg: Message }) {
               <EnhancedButton title="Copiar Mensagem" onClick={() => navigator.clipboard.writeText(content)} className="size-auto p-2 bg-transparent text-muted-foreground hover:bg-black"><CopyIcon /></EnhancedButton>
               <ContextModal />
             </div>
-          )}
         </div>
+          )}
       </div>
     </div>
   );

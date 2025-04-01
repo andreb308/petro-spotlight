@@ -91,7 +91,7 @@ function ChatWrapper() {
       {/* Chat messages container */}
       <div
         className="motion-preset-slide-down-sm motion-delay-1000 min-w-[70%] rounded-md row-span-10 gap-12 flex flex-col p-12 overflow-y-auto max-sm:w-auto max-sm:p-0 sm:max-lg:p-0"
-        style={{ scrollbarColor: "white black" }}
+        style={{ scrollbarColor: "hsl(var(--foreground)) transparent" }}
         ref={chatContainerRef}
       >
         {currentConversation && currentConversation.messages.length ? (
@@ -115,7 +115,7 @@ function ChatWrapper() {
       {/* Input area */}
       {/* NOTA: Utilizar '&&' em vez do operador '?' acaba renderizando o length (0) na tela. Não alterar. */}
       {currentConversation && currentConversation.messages.length ? (
-        <div className="rounded-md px-48 max-sm:px-4 row-span-2 mt-2 flex items-center justify-around flex-col sm:max-lg:px-4">
+        <div className="rounded-md px-48 max-sm:px-4 row-span-2 mt-1 flex items-center justify-around flex-col sm:max-lg:px-4">
           {/* <FileTags /> */}
           <PromptInput setter={setCurrentConversation} />
           {/* Disclaimer */}

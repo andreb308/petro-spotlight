@@ -81,8 +81,8 @@ export function HomeInput() {
 
   // Rendering the input component with placeholders, change handler, submit handler, and value management.
   return (
-    <div className="my-[2rem] w-full rounded-md flex flex-col antialiased bg-[#29273e] bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-      <div className="flex items-center flex-col w-full bg-zinc-800 rounded-lg p-4 gap-0 m-0">
+    <div className="my-[2rem] w-full rounded-md flex flex-col antialiased bg-transparent bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      <div className="flex items-center flex-col w-full bg-sidebar text-black rounded-lg p-4 gap-0 m-0">
         {/* onSubmit: sends the message to the API to start a new chat and move the URL to the new page */}
         {/* //@ts-ignore */}
         <PlaceholdersAndVanishInput
@@ -114,14 +114,15 @@ export function HomeInput() {
             {codeInterpreter && <CheckIcon />}Code Interpreter
           </EnhancedButton>
 
-          {/* <button className="p-[3px] relative" onClick={() => setWebSearch(p => !p)} >
-            <div className={`${!webSearch && 'hidden'} motion-preset-expand absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full`} />
-            <div className="px-8 py-2  bg-black rounded-full  relative group transition duration-200 text-foreground ">
-            Borders Test
-            </div>
-            </button> */}
         </div>
       </div>
     </div>
   );
 }
+
+{/* <button className="p-[3px] relative" onClick={() => setWebSearch(p => !p)} >
+  <div className={`${!webSearch && 'hidden'} motion-preset-expand absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full`} />
+  <div className="px-8 py-2  bg-black rounded-full  relative group transition duration-200 text-foreground ">
+  Borders Test
+  </div>
+  </button> */}
