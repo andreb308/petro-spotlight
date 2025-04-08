@@ -27,7 +27,7 @@ function Popup() {
   const Sparkles = useMemo(
     () =>
       memo(() => (
-        <div className="w-dvw h-dvh absolute top-0 left-0 m-0 p-0">
+        <div className="w-dvw h-dvh bg-transparent absolute top-0 left-0 m-0 p-0">
           <SparklesCore
             background="transparent"
             minSize={0.4}
@@ -52,19 +52,20 @@ function Popup() {
 
     // Create a new WebviewWindow with the current prompt
     const webview = new WebviewWindow(Date.now().toString(), {
-      url: `https://icad-dsv.petrobras.com.br/?prompt=${prompt}`,
+      url: `index.html`,
       decorations: true,
       center: true,
       resizable: true,
       transparent: false,
       width: 1280,
       height: 720,
-      title: "Interface Conversacional",
+      title: "Andre.IA",
       focus: true,
     });
 
     // Event listener for when the webview is created
     webview.once("tauri://created", function (e) {
+      localStorage.setItem("prompt", prompt);
       console.log("created");
       console.log("webview", e);
     });

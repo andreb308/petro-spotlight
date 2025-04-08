@@ -58,6 +58,7 @@
     "windows": [
       {
         "label": "main",
+        "title": "Andre.IA - Atalho",
         "url": "index.html",
         "visible": false,
         "decorations": false,
@@ -65,14 +66,13 @@
         "transparent": true,
         "height": 200,
         "resizable": true,
-        "title": "react-app-main",
         "center": true,
         "alwaysOnTop": false,
         "width": 400
       },
       {
         "label": "secondary",
-        "title": "petro-spotlight-ICAD",
+        "title": "Andre.IA",
         "url": "popup.html",
         "visible": true,
         "center": true,

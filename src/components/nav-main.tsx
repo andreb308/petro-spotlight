@@ -31,15 +31,17 @@ export function NavMain() {
                 <SelectValue placeholder="Selecionar Usuário" />
               </SelectTrigger>
               <SelectContent align="end">
-                <SelectItem value="FKR5">André Flávio das Chagas Barros - Estudante</SelectItem>
+                <SelectItem value="FKR5">
+                  André Flávio das Chagas Barros - Estudante
+                </SelectItem>
                 <SelectItem value="FKNP">
-                Guilherme De Almeida Martins - Estudante
+                  Guilherme De Almeida Martins - Estudante
                 </SelectItem>
               </SelectContent>
             </Select>
           </SidebarMenuItem>
           <SidebarMenuItem className="flex items-center flex-col">
-            <Avatar className="size-3/4 my-4 flex items-center justify-center ">
+            <Avatar className="size-3/4 my-4 flex items-center justify-center shrink">
               <AvatarImage src="https://github.com/andreb308.png" />
               <AvatarFallback>AB</AvatarFallback>
             </Avatar>

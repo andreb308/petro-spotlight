@@ -3,10 +3,21 @@ import { HomeInput } from "../components/templates/HomeInput";
 import HomeCarousel from "@/components/templates/HomeCarousel";
 import { Sidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/templates/Sidebar";
+import { useNavigate, useSearchParams } from "react-router";
+import { useEffect, useState } from "react";
 
 function Welcome() {
-  // const { currentConversation, setCurrentConversation } = useMessagesContext();
-  // const isHomePage = !useParams().chatId;
+  const navigate = useNavigate();
+
+  console.log(prompt);
+
+  useEffect(() => {
+    const prompt = localStorage.getItem("prompt") || "";
+    localStorage.removeItem("prompt");
+    if (!!prompt.length) {
+      navigate(`/chat/_?prompt=${prompt}`);
+    }
+  }, [prompt]);
 
   return (
     <>
