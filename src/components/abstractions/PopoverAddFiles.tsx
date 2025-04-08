@@ -17,14 +17,25 @@ function AddFilesPopover() {
     <Popover>
       {/* Opens popover when clicked. */}
       <PopoverTrigger asChild>
+      {/* <EnhancedButton
+        effect="shineHover"
+          onClick={() => setCodeInterpreter((p) => !p)}
+          className={`rounded-full bg-sidebar hover:bg-sidebar py-1 h-8 border-[0.5px] border-white ${
+            !codeInterpreter && "bg-transparent"
+          }`}
+          // effect="shineHover"
+        >
+          <SquareChartGanttIcon />
+          {/* {codeInterpreter ? <CheckIcon /> : <SquareChartGanttIcon />}Code Interpreter 
+        </EnhancedButton> */}
         <EnhancedButton
           type="button"
           effect='shineHover'
-          className="group/files absolute right-12 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full bg-zinc-900 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center border-none"
+          className={`group/files absolute right-12 top-1/2 z-50 -translate-y-1/2 rounded-full bg-transparent ${!!files && 'bg-sidebar hover:bg-sidebar'} size-8 border-[0.5px] border-white overflow-visible`}
         >
           {/* Number of files as a badge if there are any. */}
           {!!files?.length && (
-            <span className="absolute bottom-0 right-0 flex justify-center items-center text-xs p-1.5 z-[51] rounded-full bg-red-600 size-2 text-foreground">
+            <span className="absolute -bottom-2 right-0 flex justify-center items-center text-xs p-2 z-[51] rounded-full bg-red-600 size-2 text-foreground">
               {files.length}
             </span>
           )}

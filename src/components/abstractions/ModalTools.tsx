@@ -27,7 +27,7 @@ const ToolsModal = () => {
         aria-describedby="Bases de conhecimento da ferramenta."
       >
         {/* <DialogContent className="max-h-[90dvh] w-[50dvw] overflow-y-auto max-sm:w-[90%] max-[900px]:h-3/4" aria-describedby="Bases de conhecimento da ferramenta."> */}
-        <ToolsAccordion />{" "}
+        <ToolsAccordion />
         {/* // Component to display a list of tools or knowledge bases in an accordion format. */}
       </DialogContent>
     </Dialog>

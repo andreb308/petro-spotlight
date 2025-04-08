@@ -1,10 +1,48 @@
 import { Message } from "@/components/templates/MessagesContext";
+import { z } from "zod"
 
-export interface Conversation { 
-  id: number;
-  topic: string;
-  messages: Message[];
-}
+// Definindo o Rating como enum de strings
+const RatingSchema = z.enum(["1", "2", "3", "4", "5"]);
+
+// Criando um refinamento para validar o formato ISO de timestamp
+const isoDateStringSchema = z.string().refine(
+  (value) => {
+    // Regex simples para formato ISO 8601
+    const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+    return isoDateRegex.test(value);
+  },
+  {
+    message: "String must be in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)",
+  }
+);
+
+const MessageSchema = z.object({
+  message_id: z.number().int().positive(),
+  user_key: z.string(),
+  role: z.enum(["user", "assistant"]),
+  content: z.string(),
+  documents: z.string().nullable(),
+  timestamp: z.union([
+    isoDateStringSchema, // Validação para formato ISO
+    z.number()
+  ]),
+  score: RatingSchema.nullable(),
+  comment: z.string().nullable()
+});
+
+export const ConversationSchema = z.object({
+  id: z.number().int().positive(),
+  topic: z.string(),
+  messages: z.array(MessageSchema)
+});
+
+export type Conversation = z.infer<typeof ConversationSchema>;
+
+// export interface Conversation { 
+//   id: number;
+//   topic: string;
+//   messages: Message[];
+// }
 
 const conversations: Conversation[] = [
   {

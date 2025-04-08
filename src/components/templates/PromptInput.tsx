@@ -3,10 +3,9 @@ import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-van
 import { useState } from "react";
 import { Message, useMessagesContext } from "./MessagesContext";
 import { useParams, useNavigate } from "react-router";
-import { addMessageToConversation, Conversation } from "@/lib/conversation";
-import { log } from "console";
+import { Conversation } from "@/lib/conversation";
 import { EnhancedButton } from "../ui/enhanced-button";
-import { CheckIcon } from "lucide-react";
+import { FileJson2Icon, GlobeIcon, } from "lucide-react";
 
 // Function component for the input prompt, which takes a setter function as a prop.
 export function PromptInput({
@@ -94,25 +93,30 @@ export function PromptInput({
         setValue={setValue}
       />
 
-      <div className="flex items-center justify-start gap-2 w-full px-12">
+      <div className="flex items-center justify-start gap-2 w-full px-12 max-sm:px-4 sm:max-lg:px-16">
         <EnhancedButton
+          title="Web Search"
           onClick={() => setWebSearch((p) => !p)}
-          className={`rounded-full py-1 h-8 border-[0.5px] border-white ${
+          className={`rounded-full bg-sidebar hover:bg-sidebar py-1 h-8 border-[0.5px] border-white ${
             !webSearch && "bg-transparent"
           }`}
-          // effect="shineHover"
+      
         >
-          {webSearch && <CheckIcon />}Web Search
+          <GlobeIcon />
+          {webSearch && <p className="max-sm:visible sm:hidden">Web Search</p>}
         </EnhancedButton>
 
         <EnhancedButton
           onClick={() => setCodeInterpreter((p) => !p)}
-          className={`rounded-full py-1 h-8 border-[0.5px] border-white ${
+          title="Code Interpreter"
+          className={`rounded-full bg-sidebar hover:bg-sidebar py-1 h-8 border-[0.5px] border-white ${
             !codeInterpreter && "bg-transparent"
           }`}
-          // effect="shineHover"
+      
         >
-          {codeInterpreter && <CheckIcon />}Code Interpreter
+          <FileJson2Icon />
+          {codeInterpreter && <p className="max-sm:visible sm:hidden">Code Interpreter</p>}
+          {/* {codeInterpreter ? <CheckIcon /> : <SquareChartGanttIcon />}Code Interpreter */}
         </EnhancedButton>
 
       </div>

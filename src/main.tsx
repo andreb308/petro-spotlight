@@ -8,6 +8,7 @@ import { MessagesContextProvider } from "./components/templates/MessagesContext"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { FilesContextProvider } from "./components/templates/FilesContext";
 import Sidebar from "./components/templates/Sidebar";
+import Admin from "./screens/Admin";
 
 // Get the root element from the HTML document.
 const root = document.getElementById("root") as HTMLElement;
@@ -18,19 +19,17 @@ ReactDOM.createRoot(root).render(
       <FilesContextProvider>
         <SidebarProvider className="bg-background overflow-hidden">
           {/* <MessagesContextProvider> */}
-          <Sidebar />
-          <SidebarTrigger className="motion-preset-slide-down-sm motion-delay-1000 text-foreground size-10 absolute top-2 left-2 z-[250]" />
 
           {/* 
               Define the application's routes.
               - '/': The root route, renders the Welcome component.
-
-              - 'chat/:chatId': A dynamic route for displaying a specific chat, using the App component.
-                The `chatId` is a parameter passed in the URL.
-
+              
+              - 'chat/:chatId': A dynamic route for displaying a specific chat, using the ChatWrapper component.
+              The `chatId` is a parameter passed in the URL.
+              
               - '/*': A fallback route for any other paths that don't match defined routes.
-                It redirects the user to the root route ('/') using the Navigate component.
-             */}
+              It redirects the user to the root route ('/') using the Navigate component.
+              */}
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route
@@ -40,7 +39,8 @@ ReactDOM.createRoot(root).render(
                   <ChatWrapper />
                 </MessagesContextProvider>
               }
-            />
+              />
+              <Route path="/admin" element={<Admin />} />
 
             {/* Fallback route to the welcome screen. */}
             <Route path="/*" element={<Navigate to="/" replace />} />

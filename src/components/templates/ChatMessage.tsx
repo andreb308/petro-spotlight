@@ -4,7 +4,7 @@ import URL from "../../../src/assets/logos/1 - LOGO_ÍCONE - conversa - letra A 
 import ContextModal from "../abstractions/ModalContext";
 import { Message } from "@/components/templates/MessagesContext";
 import PopoverFeedback from "../abstractions/PopoverFeedback";
-import { CopyIcon } from "lucide-react";
+import { CopyIcon, EditIcon } from "lucide-react";
 import { EnhancedButton } from "../ui/enhanced-button";
 import MarkdownParser from "../abstractions/MarkdownParser";
 
@@ -34,46 +34,63 @@ function ChatMessage({ msg }: { msg: Message }) {
       <div
         id="message"
         onPointerEnter={() => setIsHovering(true)}
-        className={`${msg.role === "assistant" && "w-3/4 max-sm:w-full sm:max-lg:w-[90%]"} max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"}`}
+        className={`${
+          msg.role === "assistant" && "w-3/4 max-sm:w-full sm:max-lg:w-[90%]"
+        } max-w-[72rem] relative h-auto rounded-2xl px-4 pb-4 pt-1 text-gray-100 ${
+          msg.role === "assistant" ? "bg-[#ffffff10]" : "bg-[#ffffff05]"
+        }`}
       >
         <p className="text-muted-foreground italic font-bold">
           {msg.role === "assistant" ? "Andre.IA:" : "Usuário:"}
         </p>
-
-        
 
         {/* Markdown rendering */}
 
         <MarkdownParser role={role} content={content} />
 
         {/* Message footer */}
-        {role === "assistant" && isHovering && (
         <div
           id="footer"
-          className={`mt-2 flex flex-row items-center justify-end gap-2`}
+          className={`mt-2 flex flex-row items-center ${role === "assistant" ? 'justify-end' : 'justify-start'} gap-2`}
         >
           {/* <p
             className={`text-xs text-zinc-400 h-6 flex items-center justify-center`}
             id="timestamp"
-          >
+            >
             {date.toLocaleString("pt-BR")}
-          </p> */}
-            <div className="flex gap-2 items-center">
-              <PopoverFeedback
-                message_id={message_id}
-                rating={score}
-                feedback={comment}
-              />
-              <EnhancedButton title="Copiar Mensagem" onClick={() => navigator.clipboard.writeText(content)} className="size-auto p-2 bg-transparent text-muted-foreground hover:bg-black"><CopyIcon /></EnhancedButton>
-              <ContextModal />
+            </p> */}
+          {isHovering && (role === "assistant" ? (
+            (
+              <div className="flex gap-2 items-center">
+                <PopoverFeedback
+                  message_id={message_id}
+                  rating={score}
+                  feedback={comment}
+                />
+                <EnhancedButton
+                  title="Copiar Mensagem"
+                  onClick={() => navigator.clipboard.writeText(content)}
+                  className="size-auto p-2 bg-transparent text-muted-foreground hover:bg-black"
+                >
+                  <CopyIcon />
+                </EnhancedButton>
+                <ContextModal />
+              </div>
+            )
+          ) : (
+            <div className="absolute top-1 right-2 motion-preset-fade">
+              <EnhancedButton
+                title="Editar Mensagem"
+                className="size-auto p-2 bg-transparent text-muted-foreground hover:bg-black"
+              >
+                <EditIcon />
+              </EnhancedButton>
             </div>
+          ))}
         </div>
-          )}
       </div>
     </div>
   );
 }
-
-
 
 export default ChatMessage;

@@ -1,6 +1,7 @@
 // Importing various icons from the lucide-react library for use in the sidebar.
 import {
-  ChevronUp, MessagesSquareIcon
+  ChevronUp, MessagesSquareIcon,
+  ShieldUserIcon
 } from "lucide-react";
 
 // Importing avatar components for user profile display.
@@ -71,6 +72,12 @@ export default function AppSidebar() {
                   <Link to={"/chat/15"} className="group/item">
                     <MessagesSquareIcon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
                     <span>Conversa 3</span>
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton asChild>
+                  <Link to={"/admin"} className="group/item">
+                    <ShieldUserIcon className="group-hover/item:motion-preset-pulse motion-loop-once motion-duration-500" />
+                    <span>ADMIN</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
